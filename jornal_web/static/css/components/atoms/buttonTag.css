@@ -12,5 +12,8 @@
     transition: 200ms;
 }
 .buttonTag:hover {
-    filter: opacity(0.8);
+    filter: opacity(0.7);
+}
+.buttonTag:active {
+    filter: opacity(1);
 }
