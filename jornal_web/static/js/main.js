@@ -3,6 +3,7 @@ function main() {
     horizontalDraggable()
 }
 
+//Functions
 function horizontalDraggable() {
     const slider = document.querySelector('.horizontal-Draggable');
     let isDown = false;
