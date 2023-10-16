@@ -1,0 +1,23 @@
+.buttonTag {
+    background-color: var(--colorMainV1);
+    border: none;
+    height: 54px;
+    width: max-content;
+    
+    color: var(--colorFontV1);
+    font-size: 22px;
+    padding: 0 15px;
+    border-radius: 42px;
+    cursor: pointer;
+    transition: 200ms;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.buttonTag:hover {
+    filter: opacity(0.7);
+}
+.buttonTag:active {
+    filter: opacity(1);
+}

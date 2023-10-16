@@ -1,0 +1,19 @@
+{% comment %} 
+ComponentProps {
+    tags: string[]
+}
+{% endcomment %}
+
+{% load static %}
+
+<div class='tagList'>
+    <p class="tagList_title">
+        <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+        <span>Todos os posts</span>
+    </p>
+    <div class="tagList_list horizontal-Draggable">
+        {%for tag in tags%}
+            {% include '../atoms/buttonTag.html' with content=tag %}
+        {%endfor%}
+    </div>
+</div>

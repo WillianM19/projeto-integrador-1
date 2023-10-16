@@ -1,0 +1,39 @@
+.tagList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.tagList .tagList_title{
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tagList .tagList_title span {
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--colorMainV4);
+    font-family: PoppinsBold;
+}
+
+.tagList .tagList_title img {
+    width: 34px;
+    aspect-ratio: 1/1;
+}
+
+.tagList .tagList_list {
+    display: flex;
+    gap: 19px;
+    margin-top: 14px;
+    white-space: nowrap;
+
+    overflow-x: scroll;
+}
+
+.tagList .tagList_list::-webkit-scrollbar{
+    display: none;
+}
