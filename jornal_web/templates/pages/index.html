@@ -19,8 +19,11 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body onload="main()">
-    <h1>Hello World</h1>
+    {% include '../components/molecules/header.html'%}
+  
     {% include '../components/atoms/buttonTag.html' with content='Botão' %} 
     {% include '../components/molecules/tagList.html' with tags=tags %}
+    {% include '../components/molecules/footer.html' %}
+
   </body>
 </html>

@@ -1,0 +1,40 @@
+{% comment %} 
+    ComponentProps {
+        None
+    }
+{% endcomment %}
+
+{% load static %}
+
+<footer id="footer">
+    <div id="footer_content">
+        <div id="footer_content_contato">
+            <img src="{% static 'media/src/ifrnLogo.png' %}" alt="Logo do Instituto Federal do Rio Grande do Norte">
+            <address>
+                <p>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte</p>
+                <p>Campus Pau dos Ferros</p>
+                <p>Endereço: BR 405, Km 154, s/n, Chico Cajá - Pau dos Ferros-RN CEP: 59900-000</p>
+                <p>Telefone: <a href="tel:+558440054109">(84) 4005 4109</a></p>
+            </address>
+        </div>
+
+        <div id="footer_content_socialMedia">
+            <a href="https://www.instagram.com/ifrnpaudosferros/">
+                <img src="{% static 'media/icons/instagramFooter.svg' %}" alt="logo do instagram">
+            </a>
+            
+            <a href="https://www.facebook.com/ifrnpaudosferros/?locale=pt_BR">
+                <img src="{% static 'media/icons/facebookFooter.svg' %}" alt="logo do facebook">
+            </a>
+            
+            <a href="https://twitter.com/IFRNpdf">
+                <img src="{% static 'media/icons/twitterFooter.svg' %}" alt="logo do twitter">
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCipLYlJCDXy2sprcLQnH0uQ/about">
+                <img src="{% static 'media/icons/youtubeFooter.svg' %}" alt="logo do youtube">
+            </a>
+        </div>
+    </div>
+    <p id="">Copyright &copy; 2023 | Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte</p>
+</footer>

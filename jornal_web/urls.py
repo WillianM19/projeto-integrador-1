@@ -3,5 +3,5 @@ from jornal_web import views
 
 # blog/
 urlpatterns = [
-    path('', views.home),
+    path('', views.home, name='home'),
 ]

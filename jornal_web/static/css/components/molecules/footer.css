@@ -1,0 +1,44 @@
+#footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorMainV5);
+    color: var(--colorFontV1);
+    font-family: PoppinsBold;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#footer a{
+    color: var(--colorFontV1); 
+    text-decoration: none;
+}
+
+#footer p:last-child {
+    padding-bottom: 23px;
+}
+
+#footer_content {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    gap: 32vw;
+    padding-top: 29px;
+    padding-bottom: 80px;
+}
+
+#footer_content_contato address{
+    font-style: normal;
+    padding-top: 30px;
+}
+
+#footer_content_socialMedia{
+    display: flex;
+    gap: 24px;
+}
+
+#footer_content_socialMedia img{
+    width: 51px;
+    height: 50px;
+}
