@@ -17,9 +17,8 @@
       href='{% static "css/index.css" %}'
     />
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-</head>
-<body onload="main()">
-    {% include '../components/molecules/post.html' with title="Teste de publicação" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" %}
-    {% include '../components/molecules/post.html' with title="Teste de publicação aaaaaaaaa aaadfasdf adfasdfasd dfasdf  dfadf fa sd fasddf asdfdfa ds fd dfads fadf" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" %}
+  </head>
+  <body onload="main()">
+    {% include '../components/molecules/post.html' with title="Teste de publicação" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" admin=True %}
   </body>
 </html>

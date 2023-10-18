@@ -15,7 +15,10 @@ ComponentProps {
     <p>{{title}}</p>
     {%if admin%}
     <div class="post_adminBar">
-        
+        <img src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" />
+        <img src="{% static 'media/icons/adminIcons/IconEvent.svg'%}" />
+        <img src="{% static 'media/icons/adminIcons/IconRelevant.svg'%}" />
+        <img src="{% static 'media/icons/adminIcons/IconEdit.svg'%}" />
     </div>
     {%endif%}
     <div class="post_info">

@@ -1,6 +1,7 @@
 .post {
     max-width: 535px;
     height: 416px;
+    position: relative;
 }
 
 .post .post_postImage {
@@ -26,4 +27,29 @@
     font-size: 17px;
     font-family: PoppinsLight;
     font-weight: 300;
+}
+
+.post .post_adminBar {
+    backdrop-filter: blur(14px); 
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 81px;
+    height: 302px;
+
+    border-radius: 0px 18px 18px 0px;
+    padding: 25px 0;
+
+    gap: 27px;
+}
+.post .post_adminBar img {
+    cursor: pointer;
+}
+.post .post_adminBar img:hover {
+    filter: brightness(0) saturate(100%) invert(68%) sepia(82%) saturate(460%) hue-rotate(338deg) brightness(100%) contrast(101%);
 }
