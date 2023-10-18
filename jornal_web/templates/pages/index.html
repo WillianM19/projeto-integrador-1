@@ -19,8 +19,7 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body onload="main()">
-    <h1>Hello World</h1>
-    {% include '../components/atoms/buttonTag.html' with content='Botão' %} 
-    {% include '../components/molecules/tagList.html' with tags=tags %}
+    {% include '../components/molecules/post.html' with title="Teste de publicação" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" %}
+    {% include '../components/molecules/post.html' with title="Teste de publicação aaaaaaaaa aaadfasdf adfasdfasd dfasdf  dfadf fa sd fasddf asdfdfa ds fd dfads fadf" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" %}
   </body>
 </html>

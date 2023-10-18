@@ -1,0 +1,26 @@
+{% comment %} 
+ComponentProps {
+    title: string
+    image: string
+    author: string
+    created_at: string
+    admin: boolean
+}
+{% endcomment %}
+
+{% load static %}
+
+<div class="post">
+    <img class="post_postImage" src="{% static image %}" />
+    <p>{{title}}</p>
+    {%if admin%}
+    <div class="post_adminBar">
+        
+    </div>
+    {%endif%}
+    <div class="post_info">
+        <span>Autor</span>
+        <img src="{% static 'media/icons/IconStar.svg'%}" />
+        <span>{{created_at}}</span>
+    </div>
+</div>
