@@ -15,9 +15,6 @@
     text-decoration: none;
 }
 
-#footer p:last-child {
-    padding-bottom: 23px;
-}
 
 #footer_content {
     display: flex;
@@ -25,12 +22,11 @@
     width: 90%;
     gap: 32vw;
     padding-top: 29px;
-    padding-bottom: 80px;
 }
 
-#footer_content_contato address{
-    font-style: normal;
+#footer_content_contact address{
     padding-top: 30px;
+    font-style: normal;
 }
 
 #footer_content_socialMedia{
@@ -41,4 +37,9 @@
 #footer_content_socialMedia img{
     width: 51px;
     height: 50px;
+}
+
+#footer_content_copyright{
+    margin-top: 80px;
+    margin-bottom: 23px;
 }
