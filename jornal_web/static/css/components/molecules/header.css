@@ -25,7 +25,7 @@
     margin: 0 auto;
 }
 
-#header_container_modes{
+#header_contente_modes{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,6 +43,13 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.header_button img{
+    width: 36px;
+    height: 36px; 
+    display: block;
+    margin: 0 auto;
 }
 
 .header_button img:hover{
