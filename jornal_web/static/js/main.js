@@ -34,12 +34,10 @@ function horizontalDraggable() {
     });
 }
 
-function paginationSelect(e) {
+function paginationSelect() {
   const removeTagsFrom = [...document.querySelectorAll(".pagination li")]
 
   removeTagsFrom.map((liElement) => {
     liElement.classList.remove("selected")
   })
-  e.classList.toggle('selected')
-  console.log("dfasdf", e)
 }
