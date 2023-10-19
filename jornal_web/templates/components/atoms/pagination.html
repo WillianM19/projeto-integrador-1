@@ -1,0 +1,15 @@
+{% comment %} 
+ComponentProps {
+    selected: string
+}
+{% endcomment %}
+
+<div class="pagination">
+    <button><</button>
+    <ul>
+        {%for index in "1234567"%}
+            <li {%if selected == index %} class="selected" {%endif%} onclick="paginationSelect(this)">{{index}}</li>
+        {%endfor%}
+    </ul>
+    <button>></button>
+</div>

@@ -1,5 +1,6 @@
 /* Atoms */
 @import url(atoms/buttonTag.css);
+@import url(atoms/pagination.css);
 
 /* Molecules */
 @import url(molecules/tagList.css)
