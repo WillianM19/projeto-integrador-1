@@ -1,0 +1,20 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" fill="#373737"/>
+<g id="Home">
+<g clip-path="url(#clip0_0_1)">
+<rect x="-229" y="-1272" width="1920" height="2830" rx="5" fill="#FBFBFB"/>
+<g id="cards post">
+<g id="post/home">
+<g id="info autor">
+<path id="Vector" d="M10.3333 5.33334L15.3333 8.00001L10.3333 10.6667L7.66667 15.6667L5 10.6667L0 8.00001L5 5.33334L7.66667 0.333344L10.3333 5.33334ZM12.5 8.00001L9.3478 6.31885L7.66667 3.16668L5.98551 6.31885L2.83333 8.00001L5.98551 9.68114L7.66667 12.8333L9.3478 9.68114L12.5 8.00001Z" fill="#0B3C1F"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect x="-229" y="-1272" width="1920" height="2830" rx="5" fill="white"/>
+</clipPath>
+</defs>
+</svg>

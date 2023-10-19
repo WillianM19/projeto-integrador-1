@@ -3,6 +3,7 @@
 @import url(atoms/pagination.css);
 
 /* Molecules */
-@import url(molecules/tagList.css)
+@import url(molecules/tagList.css);
+@import url(molecules/post.css);
 
 /* Organisms */
