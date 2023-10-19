@@ -1,7 +1,10 @@
 /* Atoms */
 @import url(atoms/buttonTag.css);
+@import url(atoms/input.css);
 
 /* Molecules */
+@import url(molecules/header.css);
+@import url(molecules/footer.css);
 @import url(molecules/tagList.css);
 @import url(molecules/post.css);
 
