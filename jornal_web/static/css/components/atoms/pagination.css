@@ -1,0 +1,46 @@
+.pagination {
+    border-radius: 29px;
+    border: 1px solid var(--colorNeutralV1);
+    width: 376px;
+    height: 57px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+}
+
+.pagination button {
+    background-color: transparent;
+    border: none;
+    color: var(--colorNeutralV1);
+    font-family: PoppinsRegular;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pagination ul {
+    display: flex; 
+    gap: 22px;
+    list-style: none;
+}
+
+.pagination li {
+    color: var(--colorNeutralV1);
+    font-family: PoppinsRegular;
+    font-size: 20px;
+    font-weight: 600;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    border-radius: 50%;
+}
+
+.pagination .selected {
+    color: var(--colorFontV1);
+    background-color: var(--colorMainV3);
+    width: 40px;
+}
