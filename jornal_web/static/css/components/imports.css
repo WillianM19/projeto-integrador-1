@@ -6,5 +6,6 @@
 @import url(molecules/header.css);
 @import url(molecules/footer.css);
 @import url(molecules/tagList.css);
+@import url(molecules/post.css);
 
 /* Organisms */
