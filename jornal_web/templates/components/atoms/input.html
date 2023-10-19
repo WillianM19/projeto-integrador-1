@@ -1,0 +1,17 @@
+{% comment %} 
+    ComponentProps {
+        type: text | password | checkbox 
+        placeholder: string
+        id: string
+        name: string
+        icon: string
+        width: number(%, px)
+    }
+{% endcomment %}
+
+{% load static %}
+
+<div class="input" style="--width: {{width}}">
+    <input type="{{type}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}"/>
+    <img src="{%static icon %}" alt="{{name}}">
+</div>
