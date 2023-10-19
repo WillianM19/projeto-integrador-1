@@ -6,8 +6,8 @@
     background-color: var(--colorMainV5);
     color: var(--colorFontV1);
     font-family: PoppinsBold;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #footer a{
@@ -18,9 +18,10 @@
 
 #footer_content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 90%;
-    gap: 32vw;
+    max-width: 1500px;
+    gap: 25px;
     padding-top: 29px;
 }
 
@@ -35,11 +36,19 @@
 }
 
 #footer_content_socialMedia img{
-    width: 51px;
-    height: 50px;
+    max-width: 51px;
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s; 
+}
+
+#footer_content_socialMedia img:hover{
+    transform: scale(1.1);
 }
 
 #footer_content_copyright{
     margin-top: 80px;
     margin-bottom: 23px;
 }
+
