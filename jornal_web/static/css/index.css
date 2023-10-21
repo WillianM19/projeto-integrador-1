@@ -19,9 +19,14 @@ body {
 /* fonts */
 
 @font-face {
-    font-family: PoppinsBold;
-    src: url(../fonts/Poppins-Bold.ttf);
-  }
+  font-family: PoppinsBold;
+  src: url(../fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: PoppinsExtraBold;
+  src: url(../fonts/Poppins-ExtraBold.ttf);
+}
 
 @font-face {
   font-family: PoppinsRegular;
@@ -32,6 +37,12 @@ body {
   font-family: PoppinsLight;
   src: url(../fonts/Poppins-Light.ttf);
 }
+
+@font-face {
+  font-family: PoppinsSemiBold;
+  src: url(../fonts/Poppins-SemiBold.ttf);
+}
+
 
 /* Animations */
 @keyframes backgroundAnimation {
