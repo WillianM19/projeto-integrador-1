@@ -1,6 +1,7 @@
 // Init Functions
 function main() {
-    horizontalDraggable()
+  highlights();
+  horizontalDraggable();
 }
 
 //Functions
@@ -42,4 +43,50 @@ function paginationSelect(e) {
     liElement.classList.remove("selected")
   })
   e.classList.toggle('selected')
+}
+
+
+function highlights(){
+
+  let slides = document.querySelectorAll('.slide_container');
+  let btns = document.querySelectorAll('.nav_btn');
+  let currentSlide = 0;
+  let autoSlide = true;
+  let autoSlideInterval;
+
+  // Passagem manual
+  var manualNav = (manual) => {
+      slides.forEach((slide) => slide.classList.remove('active'));
+      btns.forEach((btn) => btn.classList.remove('active'));
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+
+      currentSlide = manual;
+
+      if (autoSlide) {
+          // Reiniciar a passagem automática
+          clearInterval(autoSlideInterval);
+          autoSlideInterval = setInterval(repeat, 10000);
+      }
+  };
+
+  btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+          manualNav(i);
+      });
+  });
+
+  // Passagem automática
+  const repeat = () => {
+      slides[currentSlide].classList.remove('active');
+      btns[currentSlide].classList.remove('active');
+
+      currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+
+      slides[currentSlide].classList.add('active');
+      btns[currentSlide].classList.add('active');
+  };
+
+  autoSlideInterval = setInterval(repeat, 10000);
 }

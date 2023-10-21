@@ -1,0 +1,31 @@
+{% comment %} 
+ComponentProps {
+    admin: boolean
+    destaques_data: dictionary list
+}
+{% endcomment %}
+
+{% load static %}
+
+<div class="highlights">
+    
+    {% for destaque in destaques_data %}
+        <a href="#" class="slide_container{% if forloop.first %} active{% endif %} ">
+            <img src="{% static destaque.imagem %}" alt="{{ destaque.titulo }}">
+            <div class="slide_filterDark"></div>
+            
+            {%if admin%}
+                <img class="slide_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque"/>
+            {%endif%}
+
+            <h2 class="slide_info">{{ destaque.titulo }}</h2>
+        </a>
+    {% endfor %}
+
+    <div class="navigation_btns">
+        {% for destaque in destaques_data %}
+            <div class="nav_btn{% if forloop.first %} active{% endif %}"></div>
+        {% endfor %}
+    </div>    
+
+</div>
