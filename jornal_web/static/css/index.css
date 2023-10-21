@@ -1,7 +1,8 @@
-
+/* Pages Styles Import */
 
 /* Components Styles import*/
 @import url(components/imports.css);
+@import url(pages/login.css);
 
 /* Global */
 * {
@@ -36,3 +37,22 @@ body {
   font-family: PoppinsLight;
   src: url(../fonts/Poppins-Light.ttf);
 }
+
+@font-face {
+  font-family: PoppinsSemiBold;
+  src: url(../fonts/Poppins-SemiBold.ttf);
+}
+
+
+/* Animations */
+@keyframes backgroundAnimation {
+  0% {
+      background-color: var(--colorMainV4);
+  }
+  50% {
+      background-color: var(--colorMainV5);
+  }
+  100% {
+      background-color: var(--colorMainV4);
+  }
+};

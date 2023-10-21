@@ -5,14 +5,16 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    height: 46px;
 }
 
 .input input{
     width: 100%;
-    height: 46px;
-    padding-left: 54px;
-    border: 1px solid var(--colorNeutralV1);
+    height: 100%;
+    padding-left: var(--paddingLeft);
+    border: 1px solid var(--borderColor);
     border-radius: 42px;
+    font-size: 20px;
 }
 
 .input input::placeholder{

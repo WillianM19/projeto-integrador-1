@@ -1,0 +1,25 @@
+{% comment %} 
+ComponentProps {
+    date: dictionary  
+    admin: boolean
+}
+{% endcomment %}
+
+{% load static %}
+
+<div class="eventItem">
+    <div class="eventItem_date">
+        <time datetime="2023-10-12">
+            <span class="month">{{date.week}}</span>
+            <span class="day_week">{{date.dayWeek}}</span>
+        </time>
+    </div>
+    <div class="eventItem_info">
+        <h2 title="Feira de Ciências" >{{date.title}}</h2>
+        <p><time datetime="{{date.event_datetime}}">{{date.event_date}}</time></p>
+    </div>
+
+    {%if admin%}
+        <img class="eventItem_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque"/>
+    {%endif%}
+</div>

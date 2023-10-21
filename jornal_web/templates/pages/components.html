@@ -19,6 +19,15 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body onload="main()">
-  {% include "../components/molecules/postRow.html" with title="Título" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" author="Autor" created_at="21 de outubro, 2023" image="media/img/placeholder.png." %}
-</body>
+    <h1>Hello World</h1>
+    {% include "../components/molecules/postRow.html" with title="Título" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" author="Autor" created_at="21 de outubro, 2023" image="media/img/placeholder.png." %}
+    {% include '../components/atoms/pagination.html' with selected="1" %} 
+    {% include '../components/molecules/header.html'%}
+    {% include '../components/atoms/buttonTag.html' with content='Botão' %} 
+    {% include '../components/molecules/tagList.html' with tags=tags %}
+    {% include '../components/molecules/footer.html' %}
+    {% include '../components/molecules/post.html' with title="Teste de publicação" image='media/img/Placeholder.png' author='Alguem' created_at="17 de outubro, 2023" %}
+    {% include '../components/molecules/createPost.html' %}
+    {% include '../components/atoms/eventItem.html' with date=destaques_data admin=admin %}
+  </body>
 </html>
