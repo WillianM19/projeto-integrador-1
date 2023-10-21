@@ -36,3 +36,9 @@ body {
   font-family: PoppinsLight;
   src: url(../fonts/Poppins-Light.ttf);
 }
+
+@font-face {
+  font-family: PoppinsSemiBold;
+  src: url(../fonts/Poppins-SemiBold.ttf);
+}
+
