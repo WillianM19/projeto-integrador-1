@@ -9,6 +9,7 @@
 @import url(molecules/footer.css);
 @import url(molecules/tagList.css);
 @import url(molecules/post.css);
+@import url(molecules/postRow.css);
 @import url(molecules/highlights.css);
 @import url(molecules/createPost.css);
 
