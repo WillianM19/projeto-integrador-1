@@ -1,7 +1,11 @@
 {% comment %} 
 ComponentProps {
     content: string
+    fontSize: string(px)
+    width: string(px)
+    height: string(px)
+    font: string
 }
 {% endcomment %}
 
-<button class='buttonTag'>{{content}}</button>
+<button style="--fontSize: {{fontSize|default:"22px"}}; --width: {{width|default:"max-content"}}; --height: {{height|default:"54px"}}; --font: {{font|default:"inherit"}}" class='buttonTag'>{{content}}</button>

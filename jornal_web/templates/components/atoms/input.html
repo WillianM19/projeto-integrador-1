@@ -1,17 +1,21 @@
 {% comment %} 
     ComponentProps {
-        type: text | password | checkbox 
+        type: text | password | checkbox | email
         placeholder: string
         id: string
         name: string
         icon: string
         width: number(%, px)
+        borderColor: string
+        required: boolean
     }
 {% endcomment %}
 
 {% load static %}
 
-<div class="input" style="--width: {{width}}">
+<div class="input" style="--width: {{width}}; --borderColor: {{borderColor|default:'var(--colorNeutralV1)'}}; --paddingLeft: {%if icon%} 54px {%else%} 13px {%endif%}" {%if required%} required {%endif%}>
     <input type="{{type}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}"/>
+    {%if icon%}
     <img src="{%static icon %}" alt="{{name}}">
+    {%endif%}
 </div>
