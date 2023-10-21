@@ -1,0 +1,67 @@
+.eventItem {
+    width: 478px;
+    height: 95.9px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    cursor: pointer;
+}
+
+.eventItem .eventItem_date {
+    width: 111px; 
+    min-width: 111px;
+    height: 100%;
+    background-color: var(--colorMainV3);
+    border-radius: 8px;
+
+}
+
+.eventItem .eventItem_date time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 100%;
+}
+
+.eventItem .eventItem_date time .month,
+.eventItem .eventItem_date time .day_week {
+    font-family: PoppinsSemiBold;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: uppercase;
+    color: var(--colorFontV1);
+}
+
+.eventItem .eventItem_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eventItem .eventItem_info h2 {
+    font-family: PoppinsSemiBold;
+    font-size: 22.78px;
+}
+
+.eventItem .eventItem_info p {
+    font-family: PoppinsRegular;
+    font-size: 16px;
+}
+
+.eventItem .eventItem_info h2,
+.eventItem .eventItem_info p {
+    color: var(--colorMainV4);
+    text-transform: capitalize;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}

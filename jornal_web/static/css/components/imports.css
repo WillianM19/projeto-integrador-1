@@ -2,6 +2,7 @@
 @import url(atoms/buttonTag.css);
 @import url(atoms/pagination.css);
 @import url(atoms/input.css);
+@import url(atoms/eventItem.css);
 
 /* Molecules */
 @import url(molecules/header.css);

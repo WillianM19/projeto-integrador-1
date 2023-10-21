@@ -19,7 +19,7 @@
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body onload="main()">
-  {% include '../components/molecules/highlights.html' with admin=admin destaques_data=destaques_data%}
+  {% include '../components/atoms/eventItem.html' with date=destaques_data %}
   
 </body>
 </html>
