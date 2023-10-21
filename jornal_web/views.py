@@ -52,3 +52,10 @@ def home(request):
         request,
         'pages/home.html', {'tags': staticTags}
     )
+    
+def login(request):
+    
+    return render(
+        request,
+        'pages/login.html'
+    )

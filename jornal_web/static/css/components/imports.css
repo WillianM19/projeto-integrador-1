@@ -10,5 +10,6 @@
 @import url(molecules/tagList.css);
 @import url(molecules/post.css);
 @import url(molecules/highlights.css);
+@import url(molecules/createPost.css);
 
 /* Organisms */
