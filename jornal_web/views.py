@@ -7,7 +7,7 @@ def components(request):
     
 
     # highlights
-    admin = False
+    admin = True
 
     destaques_data = [
     {

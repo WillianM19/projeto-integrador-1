@@ -17,4 +17,8 @@ ComponentProps {
         <h2 title="Feira de Ciências" >{{date.title}}</h2>
         <p><time datetime="{{date.event_datetime}}">{{date.event_date}}</time></p>
     </div>
+
+    {%if admin%}
+        <img class="eventItem_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque"/>
+    {%endif%}
 </div>

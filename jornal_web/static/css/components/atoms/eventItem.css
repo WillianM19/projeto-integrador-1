@@ -1,4 +1,9 @@
+body {
+    margin: 50px;
+}
+
 .eventItem {
+    position: relative;
     width: 478px;
     height: 95.9px;
     display: flex;
@@ -48,11 +53,13 @@
 .eventItem .eventItem_info h2 {
     font-family: PoppinsSemiBold;
     font-size: 22.78px;
+    width: 90%;
 }
 
 .eventItem .eventItem_info p {
     font-family: PoppinsRegular;
     font-size: 16px;
+    width: 100%;
 }
 
 .eventItem .eventItem_info h2,
@@ -63,5 +70,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
+}
+
+.eventItem .eventItem_admin_delete {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    filter: invert(59%) sepia(70%) saturate(3586%) hue-rotate(115deg) brightness(95%) contrast(101%);
+}
+
+.eventItem .eventItem_admin_delete:hover{
+    filter: brightness(0) saturate(100%) invert(68%) sepia(82%) saturate(460%) hue-rotate(338deg) brightness(100%) contrast(101%);
 }
