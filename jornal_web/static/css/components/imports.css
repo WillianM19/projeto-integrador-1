@@ -10,5 +10,10 @@
 @import url(molecules/tagList.css);
 @import url(molecules/post.css);
 @import url(molecules/highlights.css);
+@import url(molecules/modalFilters.css);
 
 /* Organisms */
+
+
+/* Templates */
+@import url(gTemplates/modalTemplate.css);

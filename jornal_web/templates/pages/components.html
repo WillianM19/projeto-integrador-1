@@ -1,25 +1,7 @@
-{% load static %}
+{% extends "../components/gTemplates/base.html" %}
+{%load static%}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IFNEWS</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href='{% static "css/themes/themeLight.css" %}'
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href='{% static "css/index.css" %}'
-    />
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-</head>
-<body onload="main()">
-  {% include '../components/atoms/eventItem.html' with date=destaques_data admin=admin %}
-  
-</body>
-</html>
+
+{%block main%}
+    {% include "../components/molecules/modalFilters.html" %}
+{% endblock %}

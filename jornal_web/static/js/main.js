@@ -5,6 +5,18 @@ function main() {
 }
 
 //Functions
+// interface handleModalProps {
+//   modalName: String
+//   option: "open" | "close"
+// }
+
+function handleModal(modalName, option) {
+  alert("aaaa")
+  const modal = document.querySelector(`.${modalName}`)
+  modal.style.display = option == "open" ? 'block' : 'none'
+}
+
+
 function horizontalDraggable() {
     const slider = document.querySelector('.horizontal-Draggable');
     let isDown = false;
