@@ -1,0 +1,24 @@
+{% comment %} 
+ComponentProps {
+    title: string
+    description: string
+    image: string
+    author: string
+    created_at: string
+}
+{% endcomment %}
+
+{% load static %}
+
+<div class="postRow">
+    <img class="postRow_postImage" src="{% static image %}" />
+    <div class="postRow_content">
+        <p>{{title}}</p>
+        <div class="postRow_info">
+            <span>{{author}}</span>
+            <img src="{% static 'media/icons/IconStar.svg'%}" />
+            <span>{{created_at}}</span>
+        </div>
+        <div class="postRow_description">{{description}}</div>
+    </div>
+</div>
