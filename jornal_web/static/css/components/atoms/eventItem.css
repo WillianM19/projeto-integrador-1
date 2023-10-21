@@ -1,5 +1,7 @@
 .eventItem {
     position: relative;
+    min-width: 478px;
+    min-height: 95.9px; 
     width: 478px;
     height: 95.9px;
     display: flex;

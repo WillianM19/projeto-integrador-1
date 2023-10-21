@@ -1,0 +1,27 @@
+{% comment %} 
+    ComponentProps {
+        event_list: dictionary list
+                    [{
+                    'week': string,
+                    'dayWeek': string
+                    'title': string
+                    'event_date': string
+                    'event_datetime': string
+                    },]
+                    
+        dmin: boolean
+    }
+{% endcomment %}
+
+{% load static %}
+
+<article class="eventList">
+    <div class="eventList_title">
+        <h2>Eventos</h2>
+    </div>
+    <div class="enventList_cards">
+        {% for events in event_list %}
+            {% include "../atoms/eventItem.html" with date=events admin=admin%}
+        {% endfor %}
+    </div>
+</article>
