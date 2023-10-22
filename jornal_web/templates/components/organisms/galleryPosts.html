@@ -1,3 +1,19 @@
+{% comment %} 
+ComponentProps {
+    posts: [
+        {
+            title: string
+            image: string
+            author: string
+            created_at: string
+            admin: boolean
+        }
+    ]
+}
+{% endcomment %}
+
 <section class='galleryPosts'>
-    <h1>sdfkjaksldjfklad</h1>
+    {% for post in posts %}
+        {% include "../molecules/post.html" with title=post.title image=post.image author=post.author created_at=post.created_at %}
+    {% endfor %}
 </section>

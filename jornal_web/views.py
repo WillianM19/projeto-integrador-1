@@ -106,9 +106,59 @@ def home(request):
         },
     ]
     
+    posts = [
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+    ]
+    
     return render(
         request,
-        'pages/home.html', {'tags': staticTags, 'relevantSliderContent': relevantSliderContent, 'event_list': event_list}
+        'pages/home.html', {
+            'tags': staticTags, 
+            'relevantSliderContent': relevantSliderContent, 
+            'event_list': event_list, 
+            'posts': posts,
+        }
     )
     
 def login(request):
