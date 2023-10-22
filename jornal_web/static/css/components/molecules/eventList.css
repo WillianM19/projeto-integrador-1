@@ -46,7 +46,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
-    padding: 10px 20px 15px 70px;
+    padding: 10px 20px 15px 75px;
     background-color: var(--colorMainV2);
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
