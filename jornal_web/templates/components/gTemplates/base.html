@@ -18,13 +18,13 @@
     href='{% static "css/index.css" %}'
     />
     
-    <link rel="icon" href="{% static "media/icons/Logo.svg" %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'media/icons/Logo.svg' %}" type="image/x-icon">
 
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     
     <title>IFNEWS</title>
 </head>
-<body>
+<body onload="main()">
   {% include "../../components/atoms/libraInterpreter.html" %}
   
   {% include '../../components/molecules/header.html'%}  

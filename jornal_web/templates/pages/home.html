@@ -8,5 +8,7 @@
             {% include "../components/molecules/highlights.html" with destaques_data=relevantSliderContent %}
             {% include "../components/molecules/eventList.html" with event_list=event_list %}
         </section>
+        {% include "../components/molecules/tagList.html" with tags=tags %}
+        {% include "../components/organisms/galleryPosts.html" with tags=tags %}
     </main>
 {% endblock %}

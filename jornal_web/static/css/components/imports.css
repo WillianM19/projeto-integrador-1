@@ -18,7 +18,7 @@
 @import url(molecules/modalPostOptions.css);
 
 /* Organisms */
-
+@import url(organisms/galleryPosts.css);
 
 /* Templates */
 @import url(gTemplates/modalTemplate.css);

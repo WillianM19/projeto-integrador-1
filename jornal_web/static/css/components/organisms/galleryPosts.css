@@ -1,0 +1,7 @@
+.galleryPosts {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 31px;
+    column-gap: 70px;
+    margin-top: 42px;
+}
