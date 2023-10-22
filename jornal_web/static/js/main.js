@@ -5,14 +5,16 @@ function main() {
 }
 
 //Functions
+
 // interface handleModalProps {
 //   modalName: String
 //   option: "open" | "close"
+//   flex: boolena
 // }
 
-function handleModal(modalName, option) { //handleModalProps
+function handleModal(modalName, option, flex) { //handleModalProps
   const modal = document.querySelector(`.${modalName}`)
-  modal.style.display = option == "open" ? 'block' : 'none'
+  modal.style.display = option == "open" ? flex ? 'flex' : 'block' : 'none'
 }
 
 

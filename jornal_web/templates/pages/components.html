@@ -1,25 +1,10 @@
 {% extends "../components/gTemplates/base.html" %}
 {%load static%}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IFNEWS</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href='{% static "css/themes/themeLight.css" %}'
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href='{% static "css/index.css" %}'
-    />
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-</head>
-<body onload="main()">
-    {% include "../components/molecules/modalFilters.html" with tags=tags alltags=tags %}
-  </body>
-</html>
+
+{%block main%}
+    <main>
+        {% include '../components/molecules/modalFilters.html' with tags=tags alltags=tags %}
+        <button onclick="handleModal('modalFilters', 'open', true)">Abrir modal</button>
+    </main>
+{% endblock %}
