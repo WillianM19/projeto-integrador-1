@@ -5,7 +5,8 @@
     width: var(--width);
     
     color: var(--colorFontV1);
-    font-size: 22px;
+    font-size: var(--fontSize);
+    font-family: var(--font);
     padding: 0 15px;
     border-radius: 42px;
     cursor: pointer;

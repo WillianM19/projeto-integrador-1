@@ -1,0 +1,16 @@
+{% extends "../components/gTemplates/base_empty.html" %}
+{%load static%}
+
+
+{%block main%}
+    <main>
+      <div class="login">
+          <form class="login_content">
+            <img src="{% static 'media/icons/IconUser.svg' %}" />
+            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Seu Email..." type='email' required=True%}
+            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Sua Senha..." type='password' required=True%}
+            {% include "../components/atoms/buttonTag.html" with content="Login" fontSize="16px" width="150px" height="38px" font="PoppinsLight"%}
+          </form>
+      </div>
+    </main>
+{% endblock %}

@@ -4,7 +4,8 @@ ComponentProps {
     width: string
     height: string
     buttonColor: string
+    font: string
 }
 {% endcomment %}
 
-<button class='buttonTag' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}">{{content}}</button>
+<button class='buttonTag' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}} --font: {{font|default:'inherit'}}">{{content}}</button>
