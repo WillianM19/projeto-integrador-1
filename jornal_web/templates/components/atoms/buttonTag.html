@@ -8,12 +8,14 @@ ComponentProps {
     onclick: () => void
     icon: string
     className: string
+    colorFont: string
+    border: string
 }
 {% endcomment %}
 
 {% load static %}
 
-<button class='buttonTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick={{onclick}}>
+<button class='buttonTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}; --border: {{border|default:'none'}} " onclick={{onclick}}>
     {% if icon %}
         <img src="{% static icon%}"/>
     {% endif %}

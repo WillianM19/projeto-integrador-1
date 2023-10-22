@@ -1,6 +1,6 @@
 .buttonTag {
     background-color: var(--buttonColor);
-    border: none;
+    border: var(--border);
     height: var(--height);
     width: var(--width);
     

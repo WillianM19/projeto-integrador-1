@@ -25,3 +25,13 @@ def login(request):
         request,
         'pages/login.html'
     )
+
+def search(request):
+
+    keySearch='Artigos'
+    staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
+    return render(
+        request,
+        'pages/search.html',
+        {'key_search':keySearch, 'tags':staticTags}
+    )

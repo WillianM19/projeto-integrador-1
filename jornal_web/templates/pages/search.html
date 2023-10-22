@@ -1,0 +1,32 @@
+{% extends "../components/gTemplates/base.html" %}
+{% load static %}
+
+{%block main%}
+    <main id="search">
+        <div id="search_container">
+            <div id="search_filters">
+
+                
+                {% comment %} Barra de busca {% endcomment %}
+                {% include '../components/atoms/input.html' with type='search' id='input_search' name='input_search' placeholder=keySearch|default:"pesquisar..." icon='media/icons/IconSearch.svg' width='80%'%}
+                
+
+                {% comment %} modal filtrar {% endcomment %}
+                {% include '../components/molecules/modalFilters.html' with tags=tags alltags=tags %}
+
+                {% comment %} botão filtrar {% endcomment %}
+                {% include "../components/atoms/buttonTag.html" with class="filters_button" content="Filtrar" fontSize="25px" width="116px" height="44px" font="PoppinsLight" icon="media/icons/iconFilter.svg" buttonColor="--colorBackground" border="" onclick="handleModal('modalFilters', 'open', true)"%}
+
+
+            </div>
+            <div class="search_results">
+                <div class="results_title">
+                    <h2></h2>
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
