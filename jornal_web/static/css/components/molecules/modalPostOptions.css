@@ -72,11 +72,14 @@
     margin-top: 21px;
 }
 
+.modalPostOptions .modalPostOptions_tagList.all {
+    margin-top: 0;
+}
+
 .modalPostOptions .modalPostOptions_alltags {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     overflow-y: auto;
-    margin-top: 21px;
     display: none;
 }

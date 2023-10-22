@@ -16,7 +16,8 @@ ComponentProps {
                 <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
                 <span>OPÇÕES DE ENVIO:</span>
             </div>
-
+            {% include '../atoms/checkbox.html' with label="Marcar como Destaque"%}
+            {% include '../atoms/checkbox.html' with label="Marcar como Evento"%}
         </div>
         <div class="modalPostOptions_tags">
             <div class="modalPostOptions_title">
@@ -39,7 +40,7 @@ ComponentProps {
                 <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
                 <span>VER OUTRAS TAGS</span>
             </div>
-            <div class="modalPostOptions_tagList">
+            <div class="modalPostOptions_tagList all">
                 {%for tag in tags%}
                     {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
                 {% endfor %}

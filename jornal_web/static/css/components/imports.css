@@ -3,6 +3,7 @@
 @import url(atoms/pagination.css);
 @import url(atoms/input.css);
 @import url(atoms/eventItem.css);
+@import url(atoms/checkbox.css);
 
 /* Molecules */
 @import url(molecules/header.css);
