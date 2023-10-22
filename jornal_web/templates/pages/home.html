@@ -3,7 +3,10 @@
 
 
 {%block main%}
-    <main>
-        
+    <main class="home">
+        <section class="home_relevantContent">
+            {% include "../components/molecules/highlights.html" with destaques_data=relevantSliderContent %}
+            {% include "../components/molecules/eventList.html" with event_list=event_list %}
+        </section>
     </main>
 {% endblock %}

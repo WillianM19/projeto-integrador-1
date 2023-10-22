@@ -1,8 +1,8 @@
 /* Pages Styles Import */
+@import url(pages/imports.css);
 
 /* Components Styles import*/
 @import url(components/imports.css);
-@import url(pages/login.css);
 
 /* Global */
 * {
@@ -22,6 +22,8 @@ body {
 
 main {
   flex: 1;
+  width: 1500px;
+  margin: auto;
 }
 
 /* fonts */
