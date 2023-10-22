@@ -15,6 +15,14 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.buttonTag img {
+    width: 22px;
+    height: 22px;
 }
 .buttonTag:hover {
     filter: opacity(0.7);

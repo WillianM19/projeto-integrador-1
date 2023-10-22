@@ -5,6 +5,8 @@
 {%block main%}
     <main>
         {% include '../components/molecules/modalFilters.html' with tags=tags alltags=tags %}
-        <button onclick="handleModal('modalFilters', 'open', true)">Abrir modal</button>
+        {% include '../components/molecules/modalPostOptions.html' with tags=tags alltags=tags %}
+        <button onclick="handleModal('modalFilters', 'open', true)">Abrir modal de filtros</button>
+        <button onclick="handleModal('modalPostOptions', 'open', true)">Abrir modal de opções de envio</button>
     </main>
 {% endblock %}

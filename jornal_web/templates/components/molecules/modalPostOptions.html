@@ -1,0 +1,51 @@
+{%load static%}
+{% comment %} 
+ComponentProps {
+    tags: string[]
+}
+{% endcomment %}
+
+{%block main%}
+<div class="modalPostOptions">
+    <div class="modalPostOptions_content">
+        <button class="modalPostOptions_btnClose" onclick="handleModal('modalPostOptions', 'close')">
+            <img src="{%static 'media/icons/IconClose.svg'%}" />
+        </button>
+        <div class="modalPostOptions_options">
+            <div class="modalPostOptions_title">
+                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+                <span>OPÇÕES DE ENVIO:</span>
+            </div>
+
+        </div>
+        <div class="modalPostOptions_tags">
+            <div class="modalPostOptions_title">
+                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+                <span>TAGS</span>
+            </div>
+            <div class="modalPostOptions_search">
+                {% include "../atoms/input.html" with placeholder="Pesquisar..." icon="media/icons/iconSearch.svg" width="100%"%}
+                {% include "../atoms/buttonTag.html" with content="Aplicar" height="46px" buttonColor="var(--colorMainV4)"%}
+            </div>
+            <div class="modalPostOptions_tagList">
+                {%for tag in tags%}
+                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
+                {% endfor %}
+                {% include "../atoms/buttonTag.html" with content="Ver Outras" height="46px" buttonColor="var(--colorNeutralV1)" onclick="modalPostOptions_showMore()" class='modalPostOption_seeMore'%}
+            </div>
+        </div>
+        <div class="modalPostOptions_alltags">
+            <div class="modalPostOptions_title">
+                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+                <span>VER OUTRAS TAGS</span>
+            </div>
+            <div class="modalPostOptions_tagList">
+                {%for tag in tags%}
+                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
+                {% endfor %}
+            </div>
+        </div>
+        {% include "../atoms/buttonTag.html" with content="DELETAR POST" height="46px" buttonColor="red" onclick="function(){alert('aaaaaa')}" icon='media/icons/adminIcons/IconDelete.svg'%}
+    </div>
+</div>
+{% endblock %}

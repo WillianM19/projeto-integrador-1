@@ -9,7 +9,7 @@ function main() {
 // interface handleModalProps {
 //   modalName: String
 //   option: "open" | "close"
-//   flex: boolena
+//   flex: boolean
 // }
 
 function handleModal(modalName, option, flex) { //handleModalProps
@@ -17,6 +17,10 @@ function handleModal(modalName, option, flex) { //handleModalProps
   modal.style.display = option == "open" ? flex ? 'flex' : 'block' : 'none'
 }
 
+function modalPostOptions_showMore() {
+  handleModal('modalPostOptions_alltags', 'open', true)
+  handleModal('modalPostOption_seeMore', 'close')
+}
 
 function horizontalDraggable() {
     const slider = document.querySelector('.horizontal-Draggable');

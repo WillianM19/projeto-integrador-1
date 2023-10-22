@@ -5,7 +5,17 @@ ComponentProps {
     height: string
     buttonColor: string
     font: string
+    onclick: () => void
+    icon: string
+    className: string
 }
 {% endcomment %}
 
-<button class='buttonTag' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}">{{content}}</button>
+{% load static %}
+
+<button class='buttonTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick={{onclick}}>
+    {% if icon %}
+        <img src="{% static icon%}"/>
+    {% endif %}
+    {{content}}
+</button>

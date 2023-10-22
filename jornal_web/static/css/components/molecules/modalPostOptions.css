@@ -1,4 +1,4 @@
-.modalFilters {
+.modalPostOptions {
     display: none;
     align-items: center;
     justify-content: center;
@@ -13,11 +13,11 @@
     background-color: rgba(00, 00, 00, 0.5);
 }
 
-.modalFilters .modalFilters_btnClose img {
+.modalPostOptions .modalPostOptions_btnClose img {
     width: 100%;
 }
 
-.modalFilters_content {
+.modalPostOptions_content {
     width: 1000px;
     background: var(--colorMainV7);
     padding: 32px;
@@ -29,7 +29,7 @@
     position: relative;
 }
 
-.modalFilters .modalFilters_btnClose {
+.modalPostOptions .modalPostOptions_btnClose {
     width: 25px;
     height: 25px;
     border: none;
@@ -42,7 +42,7 @@
     right: 32px;
 }
 
-.modalFilters .modalFilters_title {
+.modalPostOptions .modalPostOptions_title {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -54,19 +54,29 @@
     margin-bottom: 14px;
 }
 
-.modalFilters .modalFilters_title .title {
+.modalPostOptions .modalPostOptions_title .title {
     width: 34px;
     height: 34px;
 }
 
-.modalFilters .modalFilters_search {
+.modalPostOptions .modalPostOptions_search {
     display: flex;
     gap: 16px;
 }
 
-.modalFilters .modalFilters_tagList {
+.modalPostOptions .modalPostOptions_tagList {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    overflow-y: auto;
     margin-top: 21px;
+}
+
+.modalPostOptions .modalPostOptions_alltags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    overflow-y: auto;
+    margin-top: 21px;
+    display: none;
 }
