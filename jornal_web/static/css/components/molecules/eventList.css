@@ -44,9 +44,15 @@
     gap: 15px;
     overflow-y: auto;
     scrollbar-width: none;
+    -ms-overflow-style: none;
     scroll-behavior: smooth;
-    padding: 10px 20px 15px 75px;
+    padding: 10px 20px 15px 70px;
     background-color: var(--colorMainV2);
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
+}
+
+
+.eventList .enventList_cards::-webkit-scrollbar{
+    display: none;
 }
