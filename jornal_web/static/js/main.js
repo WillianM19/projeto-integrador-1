@@ -5,6 +5,23 @@ function main() {
 }
 
 //Functions
+
+// interface handleModalProps {
+//   modalName: String
+//   option: "open" | "close"
+//   flex: boolean
+// }
+
+function handleModal(modalName, option, flex) { //handleModalProps
+  const modal = document.querySelector(`.${modalName}`)
+  modal.style.display = option == "open" ? flex ? 'flex' : 'block' : 'none'
+}
+
+function modalPostOptions_showMore() {
+  handleModal('modalPostOptions_alltags', 'open', true)
+  handleModal('modalPostOption_seeMore', 'close')
+}
+
 function horizontalDraggable() {
     const slider = document.querySelector('.horizontal-Draggable');
     let isDown = false;

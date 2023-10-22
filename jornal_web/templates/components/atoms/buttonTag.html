@@ -1,11 +1,21 @@
 {% comment %} 
 ComponentProps {
     content: string
-    fontSize: string(px)
-    width: string(px)
-    height: string(px)
+    width: string
+    height: string
+    buttonColor: string
     font: string
+    onclick: () => void
+    icon: string
+    className: string
 }
 {% endcomment %}
 
-<button style="--fontSize: {{fontSize|default:"22px"}}; --width: {{width|default:"max-content"}}; --height: {{height|default:"54px"}}; --font: {{font|default:"inherit"}}" class='buttonTag'>{{content}}</button>
+{% load static %}
+
+<button class='buttonTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick={{onclick}}>
+    {% if icon %}
+        <img src="{% static icon%}"/>
+    {% endif %}
+    {{content}}
+</button>
