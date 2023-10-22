@@ -2,6 +2,7 @@
     width: 577px;
     height: 546px;
     border-radius: 18px;
+    overflow: hidden;
 }
 
 .eventList .eventList_title {
@@ -38,7 +39,7 @@
 
 .eventList .enventList_cards {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 59px);
     display: flex;
     flex-direction: column;
     gap: 15px;
