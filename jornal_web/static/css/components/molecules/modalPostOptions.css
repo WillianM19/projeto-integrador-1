@@ -1,0 +1,85 @@
+.modalPostOptions {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(00, 00, 00, 0.5);
+}
+
+.modalPostOptions .modalPostOptions_btnClose img {
+    width: 100%;
+}
+
+.modalPostOptions_content {
+    width: 1000px;
+    background: var(--colorMainV7);
+    padding: 32px;
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    position: relative;
+}
+
+.modalPostOptions .modalPostOptions_btnClose {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    
+    position: absolute;
+
+    top: 32px;
+    right: 32px;
+}
+
+.modalPostOptions .modalPostOptions_title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--colorMainV4);   
+    font-family: PoppinsBold;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.modalPostOptions .modalPostOptions_title .title {
+    width: 34px;
+    height: 34px;
+}
+
+.modalPostOptions .modalPostOptions_search {
+    display: flex;
+    gap: 16px;
+}
+
+.modalPostOptions .modalPostOptions_tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    overflow-y: auto;
+    margin-top: 21px;
+}
+
+.modalPostOptions .modalPostOptions_tagList.all {
+    margin-top: 0;
+}
+
+.modalPostOptions .modalPostOptions_alltags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    overflow-y: auto;
+    display: none;
+}
