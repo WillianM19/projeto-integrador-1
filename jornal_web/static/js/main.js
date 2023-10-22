@@ -10,8 +10,7 @@ function main() {
 //   option: "open" | "close"
 // }
 
-function handleModal(modalName, option) {
-  alert("aaaa")
+function handleModal(modalName, option) { //handleModalProps
   const modal = document.querySelector(`.${modalName}`)
   modal.style.display = option == "open" ? 'block' : 'none'
 }

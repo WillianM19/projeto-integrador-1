@@ -1,8 +1,8 @@
 .buttonTag {
-    background-color: var(--colorMainV1);
+    background-color: var(--buttonColor);
     border: none;
-    height: 54px;
-    width: max-content;
+    height: var(--height);
+    width: var(--width);
     
     color: var(--colorFontV1);
     font-size: 22px;
