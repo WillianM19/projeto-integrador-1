@@ -149,6 +149,27 @@ def home(request):
             'created_at': '22 de Outubro de 2023',
             'admin': False,
         },
+                {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
+        {
+            'title': 'Publicação',
+            'image': 'media/img/Placeholder.png',
+            'author': 'Usuário',
+            'created_at': '22 de Outubro de 2023',
+            'admin': False,
+        },
     ]
     
     return render(
@@ -166,4 +187,11 @@ def login(request):
     return render(
         request,
         'pages/login.html'
+    )
+    
+def newPost(request):
+    
+    return render(
+        request,
+        'pages/newPost.html'
     )

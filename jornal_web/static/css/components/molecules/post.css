@@ -2,6 +2,12 @@
     max-width: 479px;
     height: 416px;
     position: relative;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.post:hover {
+    transform: scale(1.02);
 }
 
 .post .post_postImage {

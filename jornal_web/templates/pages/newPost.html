@@ -1,0 +1,37 @@
+{% extends "../components/gTemplates/base_empty.html" %}
+{%load static%}
+
+
+{%block main%}
+    <main class="newPost">
+        <div class="newPost_optionsBar">
+            <button class="newPost_gotoHomeBtn">
+                <img src="{% static 'media/icons/IconHomeEditor.svg' %}" />
+            </button>
+            <div class="newPost_editorButtons">
+                <div class="newPost_format">
+                    <img src="{% static 'media/icons/editorIcons/IconH1.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconH2.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconH3.svg' %}" />
+                    <span class="separator"/></span>
+                    <img src="{% static 'media/icons/editorIcons/IconBold.svg' %}"/>
+                    <img src="{% static 'media/icons/editorIcons/IconItalic.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconUnderline.svg' %}"/>
+                    <span class="separator"></span>
+                    <img src="{% static 'media/icons/editorIcons/IconList1.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconList2.svg' %}" />
+                    <span class="separator"/></span>
+                    <img src="{% static 'media/icons/editorIcons/IconAdd.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconLink.svg' %}" />
+                </div>
+                <button class="newPost_createPost">
+                    <span>Publicar</span>
+                    <img src="{% static 'media/icons/IconNewPostSend.svg' %}" />
+                </button>
+                <button class="newPost_config">
+                    <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
+                </button>
+            </div>
+        </div>
+    </main>
+{% endblock %}
