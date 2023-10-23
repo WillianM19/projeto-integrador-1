@@ -117,3 +117,14 @@ def login(request):
         request,
         'pages/login.html'
     )
+
+
+
+
+
+def post(request):
+    
+    return render(
+        request,
+        'pages/post.html'
+    )
