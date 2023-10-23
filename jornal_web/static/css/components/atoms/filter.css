@@ -1,10 +1,10 @@
-.buttonTag {
+.filtrarTag {
     background-color: var(--buttonColor);
-    border: none;
+    border: 1px solid var(--colorNeutralV1);
     height: var(--height);
     width: var(--width);
     
-    color: var(--colorFontV1);
+    color: var(--colorMainV4);
     font-size: var(--fontSize);
     font-family: var(--font);
     padding: 0 15px;
@@ -20,13 +20,13 @@
     align-items: center;
     gap: 10px;
 }
-.buttonTag img {
+.filtrarTag img {
     width: 22px;
     height: 22px;
 }
-.buttonTag:hover {
+.filtrarTag:hover {
     filter: opacity(0.7);
 }
-.buttonTag:active {
+.filtrarTag:active {
     filter: opacity(1);
 }

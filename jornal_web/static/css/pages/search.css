@@ -1,24 +1,53 @@
 #search {
-    background-color: red;
-    margin: 10px 0;
+    margin: 10px 0 172px 0;
 }
 
 #search #search_container {
     background-color: var(--colorBackground);
     width: 1500px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
 }
 
 #search #search_container #search_filters {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 62px;
+    justify-content: space-around;
+    padding: 65px 0;
 }
 
-#search #search_container #search_filters .filters_button{
-    border: 1px solid var(--colorNeutralV1);
-    color: var(--colorMainV4);
-    padding: 18px;
+#search .search_results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    padding: 0 50px;
+}
+
+#search  .search_results .results_title {
+    width: 100%;
+    border-bottom: 3px solid var(--colorNeutralV1);
+}
+
+#search  .search_results .results_title h2{
+    color: var(--colorNeutralV1);
+    font-family: PoppinsBold;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+}
+
+
+#search  .search_results .results_title h2::before {
+    content: "";
+    background-image: url("../../media/icons/IconGreenStars.svg");
+    width: 39px;
+    height: 39px;
+    display: inline-block;
+    margin-right: 5px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    filter: invert(64%) sepia(0%) saturate(0%) hue-rotate(85deg) brightness(91%) contrast(94%);
 }

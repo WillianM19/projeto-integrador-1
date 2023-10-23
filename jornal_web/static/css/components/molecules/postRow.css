@@ -1,7 +1,7 @@
 .postRow {
     width: 100%;
     max-width: 1500px;
-    height: 302px;
+    height: 250px;
     position: relative;
 
     display: flex;
@@ -16,7 +16,7 @@
 }
 
 .postRow .postRow_postImage {
-    height: 302px;
+    height: 100%;
     object-fit: cover;
     border-radius: 18px;
 }
@@ -35,4 +35,9 @@
     font-size: 17px;
     font-family: PoppinsLight;
     font-weight: 300;
+    color: var(--colorMainV4);
+}
+
+.postRow .postRow_content .postRow_description{
+    color: var(--colorMainV4);
 }

@@ -13,9 +13,9 @@ ComponentProps {
 
 {% load static %}
 
-<button class='buttonTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick={{onclick}}>
+<button class='filtrarTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick="{{onclick}}">
+    {{content}}
     {% if icon %}
         <img src="{% static icon%}"/>
     {% endif %}
-    {{content}}
 </button>
