@@ -10,13 +10,13 @@
             </button>
             <div class="newPost_editorButtons">
                 <div class="newPost_format">
-                    <img src="{% static 'media/icons/editorIcons/IconH1.svg' %}" />
-                    <img src="{% static 'media/icons/editorIcons/IconH2.svg' %}" />
-                    <img src="{% static 'media/icons/editorIcons/IconH3.svg' %}" />
+                    <img src="{% static 'media/icons/editorIcons/IconH1.svg' %}" onclick="editorReplace('h1')"/>
+                    <img src="{% static 'media/icons/editorIcons/IconH2.svg' %}" onclick="editorReplace('h2')"/>
+                    <img src="{% static 'media/icons/editorIcons/IconH3.svg' %}" onclick="editorReplace('h3')"/>
                     <span class="separator"/></span>
-                    <img src="{% static 'media/icons/editorIcons/IconBold.svg' %}"/>
-                    <img src="{% static 'media/icons/editorIcons/IconItalic.svg' %}" />
-                    <img src="{% static 'media/icons/editorIcons/IconUnderline.svg' %}"/>
+                    <img src="{% static 'media/icons/editorIcons/IconBold.svg' %}" onclick="editorReplace('strong')"/>
+                    <img src="{% static 'media/icons/editorIcons/IconItalic.svg' %}" onclick="editorReplace('i')"/>
+                    <img src="{% static 'media/icons/editorIcons/IconUnderline.svg' %} " onclick="editorReplace('u')"/>
                     <span class="separator"></span>
                     <img src="{% static 'media/icons/editorIcons/IconList1.svg' %}" />
                     <img src="{% static 'media/icons/editorIcons/IconList2.svg' %}" />
@@ -32,6 +32,8 @@
                     <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
                 </button>
             </div>
+        </div>
+        <div class="newPost_contenteEditor" contentEditable>
         </div>
     </main>
 {% endblock %}

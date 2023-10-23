@@ -107,3 +107,25 @@ function highlights(){
 
   autoSlideInterval = setInterval(repeat, 10000);
 }
+
+function editorReplace(replacementTag) {
+  var sel, range;
+  sel = window.getSelection();
+  replaced = `<${replacementTag}>${sel}</${replacementTag}>`
+
+  editor = document.querySelector('.newPost_contenteEditor')
+
+  if (window.getSelection) {
+      if (sel.rangeCount) {
+          range = sel.getRangeAt(0);
+          range.deleteContents();
+          range.insertNode(document.createTextNode(replaced));
+      }
+  } else if (document.selection && document.selection.createRange) {
+      range = document.selection.createRange();
+      range.text = replaced;
+  }
+  let parser = new DOMParser();
+  let doc = parser.parseFromString(editor.textContent, 'text/html');
+  editor.innerHTML
+}
