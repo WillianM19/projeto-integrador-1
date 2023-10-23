@@ -10,17 +10,23 @@
             </button>
             <div class="newPost_editorButtons">
                 <div class="newPost_format">
-                    <img src="{% static 'media/icons/editorIcons/IconH1.svg' %}" onclick="editorReplace('h1')"/>
-                    <img src="{% static 'media/icons/editorIcons/IconH2.svg' %}" onclick="editorReplace('h2')"/>
-                    <img src="{% static 'media/icons/editorIcons/IconH3.svg' %}" onclick="editorReplace('h3')"/>
+                    <img data-edit="formatBlock:H1" src="{% static 'media/icons/editorIcons/IconH1.svg' %}" />
+                    <img data-edit="formatBlock:H2" src="{% static 'media/icons/editorIcons/IconH2.svg' %}" />
+                    <img data-edit="formatBlock:H3" src="{% static 'media/icons/editorIcons/IconH3.svg' %}" />
+
                     <span class="separator"/></span>
-                    <img src="{% static 'media/icons/editorIcons/IconBold.svg' %}" onclick="editorReplace('strong')"/>
-                    <img src="{% static 'media/icons/editorIcons/IconItalic.svg' %}" onclick="editorReplace('i')"/>
-                    <img src="{% static 'media/icons/editorIcons/IconUnderline.svg' %} " onclick="editorReplace('u')"/>
+
+                    <img data-edit="bold" src="{% static 'media/icons/editorIcons/IconBold.svg' %}" onclick="editorReplace('strong')"/>
+                    <img data-edit="italic" src="{% static 'media/icons/editorIcons/IconItalic.svg' %}"/>
+                    <img data-edit="underline" src="{% static 'media/icons/editorIcons/IconUnderline.svg' %} "/>
+
                     <span class="separator"></span>
-                    <img src="{% static 'media/icons/editorIcons/IconList1.svg' %}" />
-                    <img src="{% static 'media/icons/editorIcons/IconList2.svg' %}" />
+
+                    <img data-edit="insertOrderedList" src="{% static 'media/icons/editorIcons/IconList1.svg' %}" />
+                    <img data-edit="insertUnorderedList" src="{% static 'media/icons/editorIcons/IconList2.svg' %}" />
+
                     <span class="separator"/></span>
+
                     <img src="{% static 'media/icons/editorIcons/IconAdd.svg' %}" />
                     <img src="{% static 'media/icons/editorIcons/IconLink.svg' %}" />
                 </div>
@@ -33,7 +39,25 @@
                 </button>
             </div>
         </div>
-        <div class="newPost_contenteEditor" contentEditable>
+        <div class="newPost_contentEditor" id="textbox" contentEditable>
         </div>
     </main>
+    <script>
+        const log = console.log;
+        const btns = document.querySelectorAll("[data-edit]");
+        btns.forEach(btn =>
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const cmd_val = this.getAttribute("data-edit").split(":");
+                log(`cmd_val =`, cmd_val);
+                if(cmd_val[0] === 'copy') {
+                    document.execCommand(cmd_val[0]);
+                } else {
+                    log(`cmd_val[0] =`, cmd_val[0]);
+                    log(`cmd_val[1] =`, cmd_val[1]);
+                    document.execCommand(cmd_val[0], false, cmd_val[1]);
+                }
+            })
+        );
+    </script>
 {% endblock %}
