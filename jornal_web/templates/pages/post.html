@@ -3,8 +3,97 @@
 
 
 {%block main%}
-    <main>
+    <main id="post">
+        <div id="post_container">
 
+            <div class="post_title">
+                <h1>A Educação como Ferramenta de Transformação: Citações Inspiradoras</h1>
+
+                {% include "../components/atoms/postAuthor.html" with img="media/img/Placeholderat.png" nomeAutor="lorem lorem" date="17/07/2023" updated="Atualizada há 1 mês, 3 semanas" %}
+            </div>
+
+            <div class="post_content">
+
+                {% include "../components/atoms/imagePost.html" with img="media/img/Placeholderpost1.jpg" description="Descrição da Capa"%}
+
+                <p>
+                    Nesta postagem especial, vamos explorar o poder transformador da educação por meio de uma série de citações inspiradoras de figuras célebres. A educação é uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.
+                </p>
+                
+                <h2>A Importância da Educação</h2>
+
+                <p>
+                    Nesta postagem especial, vamos explorar o poder transformador da educação por meio de uma série de citações inspiradoras de figuras célebres. A educação é uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.
+                </p>
+
+                <h2>A Importância da Educação</h2>
+
+                <p>
+                    Nesta postagem especial, vamos explorar o poder transformador da educação por meio de uma série de citações inspiradoras de figuras célebres. A educação é uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.
+                </p>
+
+                <p>clique no link: <a href="#">exemplo de link aqui!</a></p>
+
+                {% include "../components/atoms/imagePost.html" with img="media/img/Placeholderpost2.png" description="Descrição da imagem"%}
+
+                <h2>A Importância da Educação</h2>
+
+                <p>
+                    Nesta postagem especial, vamos explorar o poder transformador da educação por meio de uma série de citações inspiradoras de figuras célebres. A educação é uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.
+                </p>
+                
+                <h2>A Importância da Educação</h2>
+                <p>
+                    <blockquote cite="#">
+                        “Nesta postagem especial, vamos explorar o poder transformador da educação por meio de uma série de citações inspiradoras de figuras célebres. A educação é uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.”
+                    </blockquote>
+                </p>
+
+                <h2>A Importância da Educação</h2>
+                <p>
+                    Nesta postagem especial, vamos <strong>explorar o poder transformador da educação </strong> por meio de uma série de citações inspiradoras de figuras célebres. A educação é <em>uma jornada que nos capacita a compreender o mundo, moldar nosso </em> uma jornada que nos capacita a compreender o mundo, moldar nosso futuro e contribuir para uma sociedade melhor. Acompanhe as palavras inspiradoras abaixo.
+                </p>
+
+                <ol>
+                    <li>
+                        <strong>"Cem Anos de Solidão"</strong> - Gabriel García Márquez
+                        <p>Uma obra-prima da literatura latino-americana que combina realismo mágico com uma narrativa envolvente.</p>
+                    </li>
+                    <li>
+                        <strong>"Crime e Castigo"</strong> - Fiódor Dostoiévski
+                        <p>Um mergulho profundo na psicologia humana através da história de um estudante que comete um crime.</p>
+                    </li>
+                </ol>
+                <ul>
+                    <li>
+                        <strong>"A Cor Púrpura"</strong> - Alice Walker
+                        <p>Uma emocionante saga sobre a força e a perseverança de uma mulher negra no sul dos Estados Unidos no início do século XX.</p>
+                    </li>
+                    <li>
+                        <strong>"O Alquimista"</strong> - Paulo Coelho
+                        <p>Uma jornada espiritual e filosófica de autodescoberta que tem inspirado milhões de leitores em todo o mundo.</p>
+                    </li>
+                    <li>
+                        <strong>"1984"</strong> - George Orwell
+                        <p>Uma distopia sombria que explora o poder da vigilância estatal e a luta pela liberdade individual.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="postAutor_container">
+                <div class="postAutor_emphasis">
+                    {% include "../components/atoms/postAuthor.html" with img="media/img/Placeholderat.png" nomeAutor="lorem lorem" date="17/07/2023" updated="Atualizada há 1 mês, 3 semanas" %}
+                </div>
+                <div class="toShare">
+                    {% comment %} <a class="toShare_share" href="#">Compartilhar</a> {% endcomment %}
+                    <a class="toShare_share_WhatsApp" href="https://api.whatsapp.com/send?text=Sua mensagem aqui">WhatsApp</a>
+                    <a class="toShare_share_Twitter" href="https://www.messenger.com/t/username">Twitter (X)</a>
+                    <a class="toShare_share_Facebook " href="https://www.facebook.com/sharer/sharer.php?u=https://www.exemplo.com/minhapagina">Facebook</a>
+                    <a class="toShare_share_messenger" href="fb-messenger://user-thread/12345?text=Olá,%20como%20você%20está%3F">messenger</a>
+                </div>
+            </div>
+
+        </div>
     </main>
 {% endblock %}
 

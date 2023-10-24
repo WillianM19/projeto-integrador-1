@@ -4,6 +4,8 @@
 @import url(atoms/input.css);
 @import url(atoms/eventItem.css);
 @import url(atoms/checkbox.css);
+@import url(atoms/postAuthor.css);
+@import url(atoms/imagePost.css);
 
 /* Molecules */
 @import url(molecules/header.css);

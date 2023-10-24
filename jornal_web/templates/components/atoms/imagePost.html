@@ -1,0 +1,15 @@
+{% comment %} 
+ComponentProps {
+    img: string
+    description: string
+}
+{% endcomment %}
+
+{% load static %}
+
+
+
+<div class="post_img">
+    <img src="{%static img %}" alt="{{description}}">
+    <p>{{description}}</p>
+</div>
