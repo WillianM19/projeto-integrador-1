@@ -1,0 +1,19 @@
+{% comment %} 
+ComponentProps {
+    img: string
+    nomeAutor: string
+    date: string
+    updated: string
+}
+{% endcomment %}
+
+{% load static %}
+
+<article class="postAuthor">
+    <img class="postAuthor_img" src="{%static img %}" alt="Foto de perfil do autor do post">
+
+    <div class="postAuthor_info">
+        <h4>{{nomeAutor}}</h4>
+        <p>Publicada por {{nomeAutor}} em {{date}} ― Atualizada há {{updated}}</p>
+    </div>
+</article>

@@ -2,7 +2,7 @@
 
 /* Components Styles import*/
 @import url(components/imports.css);
-@import url(pages/login.css);
+@import url(pages/imports.css);
 
 /* Global */
 * {
