@@ -1,12 +1,16 @@
 #search {
-    margin: 10px 0 172px 0;
+    margin: 10px 0 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
 }
 
 #search #search_container {
     background-color: var(--colorBackground);
     width: 1500px;
     height: 100%;
-    margin: 0 auto;
 }
 
 #search #search_container #search_filters {
