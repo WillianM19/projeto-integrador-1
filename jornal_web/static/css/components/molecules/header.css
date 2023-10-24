@@ -17,6 +17,10 @@
     max-width: 1500px;
 }
 
+#header_content form{
+    width: 40%;
+}
+
 #header_logo{
     max-width: 88px;
     max-height: 44px;

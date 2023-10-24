@@ -24,9 +24,12 @@
     width: 22px;
     height: 22px;
 }
+
 .filtrarTag:hover {
+    border-color: var(--colorMainV3);
     filter: opacity(0.7);
 }
 .filtrarTag:active {
+    border-color: var(--colorMainV3);
     filter: opacity(1);
 }

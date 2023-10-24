@@ -30,7 +30,7 @@ def search(request):
 
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
 
-    keySearch = request.GET.get('keySearch', 'Pesquisar...')
+    keySearch = request.GET.get('Artigo', 'pesqusiar')
     
     postRow_list = [
         {
