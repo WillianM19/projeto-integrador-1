@@ -200,6 +200,7 @@ def newPost(request):
         request,
         'pages/newPost.html',
         {'tags': staticTags}
+    )
 
 def post(request):
     
