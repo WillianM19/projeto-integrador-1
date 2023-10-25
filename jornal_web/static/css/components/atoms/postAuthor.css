@@ -1,0 +1,27 @@
+.postAuthor {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.postAuthor .postAuthor_img {
+    width: 100px;
+    height: 100px; 
+    object-fit: cover;
+    border-radius: 100px; 
+}
+
+
+
+.postAuthor_info h4{
+    color: var(--colorMainV4);
+    font-family: PoppinsBold;
+    font-size: 22px;
+    font-weight: bold; 
+}
+
+.postAuthor_info p{
+    color: var(--colorMainV4);
+    font-family: PoppinsRegular;
+    font-size: 18px;
+}

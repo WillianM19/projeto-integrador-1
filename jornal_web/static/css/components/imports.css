@@ -5,6 +5,8 @@
 @import url(atoms/eventItem.css);
 @import url(atoms/checkbox.css);
 @import url(atoms/filter.css);
+@import url(atoms/postAuthor.css);
+@import url(atoms/imagePost.css);
 
 /* Molecules */
 @import url(molecules/header.css);
@@ -15,6 +17,7 @@
 @import url(molecules/highlights.css);
 @import url(molecules/modalFilters.css);
 @import url(molecules/createPost.css);
+@import url(molecules/eventList.css);
 @import url(molecules/modalPostOptions.css);
 
 /* Organisms */
