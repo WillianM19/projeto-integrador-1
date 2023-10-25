@@ -200,4 +200,10 @@ def newPost(request):
         request,
         'pages/newPost.html',
         {'tags': staticTags}
+
+def post(request):
+    
+    return render(
+        request,
+        'pages/post.html'
     )
