@@ -173,7 +173,7 @@ def home(request):
     ]
     
     # Admin
-    admin = False
+    admin = True
     
     return render(
         request,
