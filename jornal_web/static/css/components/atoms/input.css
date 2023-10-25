@@ -15,6 +15,7 @@
     border: 1px solid var(--borderColor);
     border-radius: 42px;
     font-size: 20px;
+    background-color: var(--backgroundColor);
 }
 
 .input input::placeholder{

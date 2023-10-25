@@ -15,7 +15,7 @@
 body {
   background-color: var(--colorBackground);
   min-height: 100vh;
-
+  scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
 }

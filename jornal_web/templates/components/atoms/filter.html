@@ -1,0 +1,21 @@
+{% comment %} 
+ComponentProps {
+    content: string
+    width: string
+    height: string
+    buttonColor: string
+    font: string
+    onclick: () => void
+    icon: string
+    className: string
+}
+{% endcomment %}
+
+{% load static %}
+
+<button class='filtrarTag {{class}}' style="--width: {{width|default:'max-content'}}; --height: {{height|default:'54px'}}; --buttonColor: {{buttonColor|default:'var(--colorMainV1)'}}; --font: {{font|default:'inherit'}}" onclick="{{onclick}}">
+    {{content}}
+    {% if icon %}
+        <img src="{% static icon%}"/>
+    {% endif %}
+</button>
