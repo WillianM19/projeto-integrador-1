@@ -32,6 +32,7 @@
     white-space: nowrap;
 
     overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 .tagList .tagList_list::-webkit-scrollbar{

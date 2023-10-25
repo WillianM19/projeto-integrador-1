@@ -5,6 +5,7 @@ from jornal_web import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('login', views.login, name='login'),
+    path('newPost', views.newPost, name='newPost'),
     path('search', views.search, name='search'),
     path('post', views.post, name='post'),
     # para testar os componentes

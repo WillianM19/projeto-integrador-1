@@ -1,8 +1,7 @@
 .eventItem {
     position: relative;
-    min-width: 478px;
     min-height: 95.9px; 
-    width: 478px;
+    width: 450px;
     height: 95.9px;
     display: flex;
     align-items: center;
@@ -11,12 +10,11 @@
 }
 
 .eventItem .eventItem_date {
-    width: 111px; 
+    max-width: 111px; 
     min-width: 111px;
     height: 100%;
     background-color: var(--colorMainV3);
     border-radius: 8px;
-
 }
 
 .eventItem .eventItem_date time {
@@ -56,8 +54,8 @@
 
 .eventItem .eventItem_info p {
     font-family: PoppinsRegular;
-    font-size: 16px;
     width: 100%;
+    font-size: 16px;
 }
 
 .eventItem .eventItem_info h2,

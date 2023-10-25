@@ -1,0 +1,10 @@
+.home {
+    min-height: 100vh;
+}
+
+.home .home_relevantContent {
+    margin-top: 42px;
+    margin-bottom: 61px;
+    display: flex;
+    gap: 25px;
+}

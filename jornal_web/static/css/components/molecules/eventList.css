@@ -1,8 +1,9 @@
 .eventList {
     width: 577px;
-    height: 546px;
+    height: 500px;
     border-radius: 18px;
     overflow: hidden;
+    position: relative;
 }
 
 .eventList .eventList_title {
@@ -47,7 +48,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
-    padding: 10px 20px 15px 75px;
+    padding: 10px 20px 15px 30px;
     background-color: var(--colorMainV2);
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;

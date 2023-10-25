@@ -1,0 +1,127 @@
+.newPost {
+    background-color: var(--colorBackgroundV2);
+    width: 100vw;
+}
+
+.newPost_optionsBar, .newPost_contentEditor {
+    max-width: 1500px;
+}
+
+.newPost .newPost_optionsBar{
+    position: fixed;
+    top: 27px;
+    left: 50%;
+    width: 100%;
+    height: 48px;
+
+    display: flex;
+    justify-content: space-between;
+    transform: translateX(-50%);
+}
+
+.newPost .newPost_editorButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newPost .newPost_gotoHomeBtn {
+    width: 64px;
+    height: 100%;
+    border: none;
+    background-color: var(--colorMainV7);
+    border-radius: 8px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+.newPost .newPost_editorButtons {
+    width: 70%;
+}
+
+.newPost .newPost_format {
+    background-color: var(--colorMainV7);
+    width: 580px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 14px 0px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.newPost .newPost_format img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.newPost .newPost_format img:hover {
+    transform: scale(1.1);
+}
+
+.newPost .newPost_format img:active {
+    transform: scale(1.2);
+}
+
+.newPost .newPost_config {
+    width: 77px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--colorMainV7);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+.newPost .newPost_createPost {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--colorNeutralV1);
+    font-family: PoppinsBold;
+    font-size: 20px;
+    font-weight: 600;
+
+    background-color: var(--colorMainV7);
+    border: none;
+    border-radius: 8px;
+    padding: 0 30px;
+
+    cursor: pointer;
+    box-shadow: 2px 2px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+.newPost .separator {
+    height: 28px;
+    border-left: 2px solid var(--colorNeutralV1);
+}
+
+.newPost .newPost_contentEditor {
+    width: calc(100% - 100px);
+    margin: 137px auto;
+    background-color: var(--colorMainV7);
+    min-height: 100vh;
+    border-radius: 8px;
+
+    outline: none;
+
+    padding: 48px;
+    font-size: 24px;
+}
+
+.newPost .newPost_contentEditor ul {
+    list-style-position: inside;
+}
+
+.newPost .newPost_contentEditor li {
+    list-style-position: inside;
+}
