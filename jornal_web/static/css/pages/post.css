@@ -1,11 +1,9 @@
 #post {
-    margin: 10px 0 172px 0;
-
+    margin-bottom: 50px;
 }
 
 #post #post_container {
     background-color: var(--colorBackground);
-    max-width: 1300px;
     width: 100%;
     height: 100%;
     margin: 0 auto;
