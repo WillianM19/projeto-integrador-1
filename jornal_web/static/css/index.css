@@ -12,6 +12,11 @@
   font-family: PoppinsRegular;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   background-color: var(--colorBackground);
   min-height: 100vh;
