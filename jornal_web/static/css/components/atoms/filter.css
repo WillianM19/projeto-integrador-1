@@ -1,0 +1,35 @@
+.filtrarTag {
+    background-color: var(--buttonColor);
+    border: 1px solid var(--colorNeutralV1);
+    height: var(--height);
+    width: var(--width);
+    
+    color: var(--colorMainV4);
+    font-size: var(--fontSize);
+    font-family: var(--font);
+    padding: 0 15px;
+    border-radius: 42px;
+    cursor: pointer;
+    transition: 200ms;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.filtrarTag img {
+    width: 22px;
+    height: 22px;
+}
+
+.filtrarTag:hover {
+    border-color: var(--colorMainV3);
+    filter: opacity(0.7);
+}
+.filtrarTag:active {
+    border-color: var(--colorMainV3);
+    filter: opacity(1);
+}
