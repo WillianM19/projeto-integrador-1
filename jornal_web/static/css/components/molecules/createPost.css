@@ -1,8 +1,15 @@
 .createPost {
-    max-width: 535px;
+    width: 479px;
     height: 416px;
     position: relative;
+    cursor: pointer;
+    transition: 200ms;
 }
+
+.createPost:hover {
+    transform: scale(1.02);
+}
+
 
 .createPost .createPost_icon {
     width: 100%;

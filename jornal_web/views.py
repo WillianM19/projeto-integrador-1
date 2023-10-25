@@ -172,6 +172,9 @@ def home(request):
         },
     ]
     
+    # Admin
+    admin = True
+    
     return render(
         request,
         'pages/home.html', {
@@ -179,6 +182,7 @@ def home(request):
             'relevantSliderContent': relevantSliderContent, 
             'event_list': event_list, 
             'posts': posts,
+            'admin': admin,
         }
     )
     
@@ -190,8 +194,10 @@ def login(request):
     )
     
 def newPost(request):
+    staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
     
     return render(
         request,
-        'pages/newPost.html'
+        'pages/newPost.html',
+        {'tags': staticTags}
     )

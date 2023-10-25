@@ -1,5 +1,10 @@
 .newPost {
     background-color: var(--colorBackgroundV2);
+    width: 100vw;
+}
+
+.newPost_optionsBar, .newPost_contentEditor {
+    max-width: 1500px;
 }
 
 .newPost .newPost_optionsBar{
@@ -11,7 +16,6 @@
 
     display: flex;
     justify-content: space-between;
-    max-width: 1500px;
     transform: translateX(-50%);
 }
 

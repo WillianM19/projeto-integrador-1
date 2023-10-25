@@ -6,7 +6,7 @@ ComponentProps {
 
 {% load static %}
 
-<div class="createPost">
+<div class="createPost" onclick="window.open('{% url 'newPost' %}', '_self');">
     <div class="createPost_icon">
         <img src="{% static 'media/icons/IconCreateNewPost.svg' %}" />
     </div>

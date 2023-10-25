@@ -3,9 +3,10 @@
 
 
 {%block main%}
+    {% include "../components/molecules/modalPostOptions.html" with tags=tags alltags=tags %}
     <main class="newPost">
         <div class="newPost_optionsBar">
-            <button class="newPost_gotoHomeBtn">
+            <button class="newPost_gotoHomeBtn" onclick="window.open('{% url 'home' %}', '_self');">
                 <img src="{% static 'media/icons/IconHomeEditor.svg' %}" />
             </button>
             <div class="newPost_editorButtons">
@@ -30,11 +31,11 @@
                     <img src="{% static 'media/icons/editorIcons/IconAdd.svg' %}" />
                     <img src="{% static 'media/icons/editorIcons/IconLink.svg' %}" />
                 </div>
-                <button class="newPost_createPost">
+                <button class="newPost_createPost" onclick="createPost()">
                     <span>Publicar</span>
                     <img src="{% static 'media/icons/IconNewPostSend.svg' %}" />
                 </button>
-                <button class="newPost_config">
+                <button class="newPost_config" onclick="handleModal('modalPostOptions', 'open', true)">
                     <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
                 </button>
             </div>
@@ -59,5 +60,13 @@
                 }
             })
         );
+
+        function createPost() {
+            if (confirm("Deseja criar essa publicação?")) {
+                alert("Publicado com sucesso!")
+            } else {
+                alert("Publicação cancelada!")
+            }
+        }
     </script>
 {% endblock %}
