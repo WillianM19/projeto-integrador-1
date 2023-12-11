@@ -23,7 +23,7 @@ class Publicacao(models.Model):
     conteudo = models.CharField(max_length=100000) #Conta com tags html
     data_de_publicacao = models.DateField()
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
-    
+    tags = models.ManyToManyField(Tags)    
     def __str__(self):
         return self.titulo
     class Meta:
