@@ -23,19 +23,25 @@ def components(request):
 def home(request):
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
     
-    
     # Destaques
-    destaques = Publicacao.objects.filter(tags__nome__in=['destaque'])
+    destaques = Publicacao.objects.filter(tags__nome__in=['destaque']).order_by('-data_de_publicacao')
     
     relevantSliderContent = []
+    relevantCouter = 0
+    
+    ##Quantidade maxima de publicações exibidas
+    maxRelevantAmount = 4
     
     for destaque in destaques:
+        if (relevantCouter >= maxRelevantAmount): break
+        
         destaque_aux = {
-            'imagem': destaque.capa.url,
+            'imagem': destaque.capa,
             'titulo': destaque.titulo,
         }
         
         relevantSliderContent.append(destaque_aux)
+        relevantCouter +=1
         
     # Eventos
     eventos = Publicacao.objects.filter(tags__nome__in=['evento'])
@@ -53,9 +59,6 @@ def home(request):
         }
         
         event_list.append(post)
-        
-    
-    
     
     posts = [
         {
@@ -124,7 +127,7 @@ def home(request):
     ]
     
     # Admin
-    admin = True
+    admin = False
     
     return render(
         request,

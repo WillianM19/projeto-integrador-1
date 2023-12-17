@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Imagens
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploadedImages')
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Application definition
 
