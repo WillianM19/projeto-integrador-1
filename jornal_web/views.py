@@ -23,35 +23,26 @@ def components(request):
 def home(request):
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
     
-    relevantSliderContent = [
-    {
-        'imagem': 'media/img/highlights/1.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/2.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/3.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/4.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/5.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },]
     
-
+    # Destaques
+    destaques = Publicacao.objects.filter(tags__nome__in=['destaque'])
+    
+    relevantSliderContent = []
+    
+    for destaque in destaques:
+        destaque_aux = {
+            'imagem': destaque.capa.url,
+            'titulo': destaque.titulo,
+        }
+        
+        relevantSliderContent.append(destaque_aux)
+        
     # Eventos
-    events = Publicacao.objects.filter(tags__nome__in=['evento'])
+    eventos = Publicacao.objects.filter(tags__nome__in=['evento'])
     
     event_list = []
     
-    for evento in events:
+    for evento in eventos:
         
         post = {
             'title': evento.titulo,
