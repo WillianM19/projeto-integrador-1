@@ -5,11 +5,12 @@
 {%block main%}
     <main>
       <div class="login">
-          <form class="login_content">
+          <form class="login_content" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
             <img src="{% static 'media/icons/IconUser.svg' %}" />
-            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Seu Email..." type='email' required=True%}
-            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Sua Senha..." type='password' required=True%}
-            {% include "../components/atoms/buttonTag.html" with content="Login" fontSize="16px" width="150px" height="38px" font="PoppinsLight"%}
+            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Seu Email..." type='username' name='username' required=True%}
+            {% include "../components/atoms/input.html" with borderColor="var(--colorMainV3)" width='90%' placeholder="Sua Senha..." type='password' name='password' required=True%}
+            {% include "../components/atoms/buttonTag.html" with content="Login" fontSize="16px" width="150px" height="38px" font="PoppinsLight" type="submit"%}
           </form>
       </div>
     </main>

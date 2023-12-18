@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, render
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -12,7 +13,7 @@ def components(request):
 
     return render(
         request,
-        'pages/components.html', {'tags': staticTags, 'admin': admin, 'event_list': event_list}
+        'pages/components.html', {'tags': staticTags, 'admin': admin}
     )
 
 
@@ -186,12 +187,22 @@ def home(request):
         }
     )
     
-def login(request):
-    
-    return render(
-        request,
-        'pages/login.html'
-    )
+def login_postador(request):
+    if request.method == 'POST':
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None and user.is_active:
+            login(request, user)
+            return redirect('home')
+        else:
+            # Adicione uma mensagem de erro usando o sistema de mensagens do Django
+            return render(request, 'pages/login.html')
+
+    return render(request, 'pages/login.html')
     
 def newPost(request):
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
