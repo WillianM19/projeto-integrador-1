@@ -1,6 +1,6 @@
 {% comment %} 
     ComponentProps {
-        None
+        admin
     }
 {% endcomment %}
 
@@ -28,7 +28,10 @@
             <button class='header_button'>
                 <img src="{%static 'media/icons/HighContrast.svg' %}" alt="Botão representando o opção de mudar para o tema de cores alto contraste">
             </button>
-        
+            
+            {% if admin %}
+                <a class="logout" href="{% url 'logout' %}">Sair</a>
+            {% endif %}
         </div>
     </div>
 

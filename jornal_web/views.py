@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -174,7 +174,7 @@ def home(request):
     ]
     
     # Admin
-    admin = True
+    admin = request.user.is_authenticated
     
     return render(
         request,
@@ -203,7 +203,11 @@ def login_postador(request):
             return render(request, 'pages/login.html')
 
     return render(request, 'pages/login.html')
-    
+
+def logout_postador(request):
+    logout(request)
+    return redirect('home')
+
 def newPost(request):
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
     
