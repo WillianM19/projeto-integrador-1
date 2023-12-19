@@ -47,3 +47,19 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.login .login_content .login_content_error{
+    background-color: rgba(252, 220, 38, 0.3);
+    border: 2px solid orange;
+    border-radius: 15px;
+    margin: 4px 25px;
+    z-index: 3;
+}
+
+.login .login_content .login_content_error .login_error {
+    text-align: center;
+    font-size: 14px;
+    padding: 4px;
+    color: orange;
+    font-weight: bold;
+}

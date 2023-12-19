@@ -188,6 +188,8 @@ def home(request):
     )
     
 def login_postador(request):
+    message = None
+    
     if request.method == 'POST':
 
         username = request.POST.get('username')
@@ -199,10 +201,10 @@ def login_postador(request):
             login(request, user)
             return redirect('home')
         else:
-            # Adicione uma mensagem de erro usando o sistema de mensagens do Django
-            return render(request, 'pages/login.html')
+            message = 'Credenciais inválidas. Por favor, verifique os campos de e-mail e senha.'
+            return render(request, 'pages/login.html',{'message':message})
 
-    return render(request, 'pages/login.html')
+    return render(request, 'pages/login.html', {'message':message})
 
 def logout_postador(request):
     logout(request)
