@@ -16,7 +16,7 @@ ComponentProps {
     
     {% for destaque in destaques_data %}
         <a href="{% url 'post' %}" class="slide_container{% if forloop.first %} active{% endif %} ">
-            <img src="{% static destaque.imagem %}" alt="{{ destaque.titulo }}">
+            <img src="{{ destaque.imagem.url }}" alt="{{ destaque.titulo }}">
             <div class="slide_filterDark"></div>
             
             {%if admin%}

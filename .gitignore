@@ -17,3 +17,5 @@ env.bak/
 venv.bak/
 .vscode
 media_images
+media
+uploadedImages
