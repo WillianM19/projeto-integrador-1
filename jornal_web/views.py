@@ -2,6 +2,7 @@ import datetime
 from django.shortcuts import render
 from jornal_web.models import Publicacao
 import locale
+from .foms import PublicacaoForm
 locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
 
 # Create your views here.
@@ -16,7 +17,7 @@ def components(request):
 
     return render(
         request,
-        'pages/components.html', {'tags': staticTags, 'admin': admin, 'event_list': event_list}
+        'pages/components.html', {'tags': staticTags, 'admin': admin}
     )
 
 
@@ -127,7 +128,7 @@ def home(request):
     ]
     
     # Admin
-    admin = False
+    admin = True
     
     return render(
         request,
@@ -147,14 +148,25 @@ def login(request):
         'pages/login.html'
     )
     
+from django.shortcuts import render, redirect
+
+
 def newPost(request):
-    staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
-    
-    return render(
-        request,
-        'pages/newPost.html',
-        {'tags': staticTags}
-    )
+    form = PublicacaoForm()  # Crie uma instância do formulário
+
+    if request.method == 'POST':
+        form = PublicacaoForm(request.POST)
+
+        # Chame is_valid() corretamente, com parênteses
+        if form.is_valid():
+            form.save()
+            form = PublicacaoForm()  # Crie um novo formulário em branco após salvar
+
+    # Adicione o formulário ao contexto, mesmo se o método não for POST
+    context = {"form": form}
+
+    return render(request, "pages/newPost.html", context)
+
 
 def search(request):
 
