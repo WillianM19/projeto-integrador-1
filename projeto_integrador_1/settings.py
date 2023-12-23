@@ -133,6 +133,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'jornal_web.Postador'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # CKEditor
 CKEDITOR_UPLOAD_PATH = 'ckeditor/upload/'

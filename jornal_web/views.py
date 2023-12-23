@@ -1,5 +1,6 @@
+from django.shortcuts import render, redirect, render
+from django.contrib.auth import authenticate, login, logout
 import datetime
-from django.shortcuts import render
 from jornal_web.models import Publicacao
 import locale
 from .foms import PublicacaoForm
@@ -128,7 +129,7 @@ def home(request):
     ]
     
     # Admin
-    admin = True
+    admin = request.user.is_authenticated
     
     return render(
         request,
@@ -141,14 +142,28 @@ def home(request):
         }
     )
     
-def login(request):
+def login_postador(request):
+    message = None
     
-    return render(
-        request,
-        'pages/login.html'
-    )
-    
+    if request.method == 'POST':
 
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None and user.is_active:
+            login(request, user)
+            return redirect('home')
+        else:
+            message = 'Credenciais inválidas. Por favor, verifique os campos de e-mail e senha.'
+            return render(request, 'pages/login.html',{'message':message})
+
+    return render(request, 'pages/login.html', {'message':message})
+
+def logout_postador(request):
+    logout(request)
+    return redirect('home')
 
 def newPost(request):
     form = PublicacaoForm()  # Crie uma instância do formulário

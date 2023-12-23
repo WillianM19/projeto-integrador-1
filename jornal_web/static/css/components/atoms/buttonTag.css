@@ -16,9 +16,11 @@
     -ms-user-select: none;
     user-select: none;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    /*
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    */
 }
 .buttonTag img {
     width: 22px;
