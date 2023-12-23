@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 class Tags(models.Model):
@@ -20,7 +21,7 @@ class Postador(models.Model):
 
 class Publicacao(models.Model):
     titulo = models.CharField(max_length=200)
-    conteudo = models.CharField(max_length=100000) #Conta com tags html
+    conteudo = RichTextUploadingField() #Conta com tags html
     data_de_publicacao = models.DateField()
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)    

@@ -1,72 +1,39 @@
-{% extends "../components/gTemplates/base_empty.html" %}
+{% extends "../components/gTemplates/base_editor.html" %}
 {%load static%}
 
 
 {%block main%}
     {% include "../components/molecules/modalPostOptions.html" with tags=tags alltags=tags %}
     <main class="newPost">
-        <div class="newPost_optionsBar">
-            <button class="newPost_gotoHomeBtn" onclick="window.open('{% url 'home' %}', '_self');">
-                <img src="{% static 'media/icons/IconHomeEditor.svg' %}" />
+        <div id="container_editor">
+            <form method="post">
+                {% csrf_token %}
+                {{form.media}}
+                {{form.as_p}}
+        
+                <button class="button-send" type="submit">Enviar</button>
+            </form>
+            <a href="{% url "home" %}" class="button-home">
+                <img src="{%static "media\icons\IconHomeEditor.svg" %}" alt="icone da página principal">
+            </a>
+
+            <button class="newPost_config" onclick="handleModal('modalPostOptions', 'open', true)">
+                <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
             </button>
-            <div class="newPost_editorButtons">
-                <div class="newPost_format">
-                    <img data-edit="formatBlock:H1" src="{% static 'media/icons/editorIcons/IconH1.svg' %}" />
-                    <img data-edit="formatBlock:H2" src="{% static 'media/icons/editorIcons/IconH2.svg' %}" />
-                    <img data-edit="formatBlock:H3" src="{% static 'media/icons/editorIcons/IconH3.svg' %}" />
 
-                    <span class="separator"/></span>
-
-                    <img data-edit="bold" src="{% static 'media/icons/editorIcons/IconBold.svg' %}" onclick="editorReplace('strong')"/>
-                    <img data-edit="italic" src="{% static 'media/icons/editorIcons/IconItalic.svg' %}"/>
-                    <img data-edit="underline" src="{% static 'media/icons/editorIcons/IconUnderline.svg' %} "/>
-
-                    <span class="separator"></span>
-
-                    <img data-edit="insertOrderedList" src="{% static 'media/icons/editorIcons/IconList1.svg' %}" />
-                    <img data-edit="insertUnorderedList" src="{% static 'media/icons/editorIcons/IconList2.svg' %}" />
-
-                    <span class="separator"/></span>
-
-                    <img src="{% static 'media/icons/editorIcons/IconAdd.svg' %}" />
-                    <img src="{% static 'media/icons/editorIcons/IconLink.svg' %}" />
-                </div>
-                <button class="newPost_createPost" onclick="createPost()">
-                    <span>Publicar</span>
-                    <img src="{% static 'media/icons/IconNewPostSend.svg' %}" />
-                </button>
-                <button class="newPost_config" onclick="handleModal('modalPostOptions', 'open', true)">
-                    <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
-                </button>
-            </div>
-        </div>
-        <div class="newPost_contentEditor" id="textbox" contentEditable>
         </div>
     </main>
-    <script>
-        const log = console.log;
-        const btns = document.querySelectorAll("[data-edit]");
-        btns.forEach(btn =>
-            btn.addEventListener("click", function (e) {
-                e.preventDefault();
-                const cmd_val = this.getAttribute("data-edit").split(":");
-                log(`cmd_val =`, cmd_val);
-                if(cmd_val[0] === 'copy') {
-                    document.execCommand(cmd_val[0]);
-                } else {
-                    log(`cmd_val[0] =`, cmd_val[0]);
-                    log(`cmd_val[1] =`, cmd_val[1]);
-                    document.execCommand(cmd_val[0], false, cmd_val[1]);
-                }
-            })
-        );
 
-        function createPost() {
-            if (confirm("Deseja criar essa publicação?")) {
-                alert("Publicado com sucesso!")
-            } else {
-                alert("Publicação cancelada!")
-            }
-        }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            CKEDITOR.on('instanceReady', function (event) {
+                var editor = event.editor;
+                var editable = editor.editable();
+                editable.$.style.padding = '18px';
+                editable.$.style.fontSize = '20px';
+            });
+        });
+        
     </script>
+
 {% endblock %}
