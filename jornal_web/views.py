@@ -148,7 +148,6 @@ def login(request):
         'pages/login.html'
     )
     
-from django.shortcuts import render, redirect
 
 
 def newPost(request):
@@ -166,6 +165,7 @@ def newPost(request):
     context = {"form": form}
 
     return render(request, "pages/newPost.html", context)
+
 
 
 def search(request):
