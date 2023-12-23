@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect, render
 from django.contrib.auth import authenticate, login, logout
+import datetime
+from jornal_web.models import Publicacao
+import locale
+from .foms import PublicacaoForm
+locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
 
 # Create your views here.
 
@@ -20,92 +25,42 @@ def components(request):
 def home(request):
     staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
     
-    relevantSliderContent = [
-    {
-        'imagem': 'media/img/highlights/1.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/2.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/3.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/4.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },
-    {
-        'imagem': 'media/img/highlights/5.png',
-        'titulo': 'Aprendizado Global: Alunos da Escola VWX Participam de Intercâmbio Cultural',
-    },]
+    # Destaques
+    destaques = Publicacao.objects.filter(tags__nome__in=['destaque']).order_by('-data_de_publicacao')
     
-    event_list = [
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-                {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-        {
-            'week': 'set',
-            'dayWeek': '12',
-            'title': 'Feira de Ciências',
-            'event_date': '17 de outubro de 2023 Das 14:00 às 17:00',
-            'event_datetime': '2023-10-17T14:00',
-        },
-    ]
+    relevantSliderContent = []
+    relevantCouter = 0
+    
+    ##Quantidade maxima de publicações exibidas
+    maxRelevantAmount = 4
+    
+    for destaque in destaques:
+        if (relevantCouter >= maxRelevantAmount): break
+        
+        destaque_aux = {
+            'imagem': destaque.capa,
+            'titulo': destaque.titulo,
+        }
+        
+        relevantSliderContent.append(destaque_aux)
+        relevantCouter +=1
+        
+    # Eventos
+    eventos = Publicacao.objects.filter(tags__nome__in=['evento'])
+    
+    event_list = []
+    
+    for evento in eventos:
+        
+        post = {
+            'title': evento.titulo,
+            'event_date': evento.data_de_publicacao,
+            'event_datetime': evento.data_de_publicacao,
+            'dayWeek': evento.data_de_publicacao.day,
+            'week': evento.data_de_publicacao.strftime('%B')[0:3]
+        }
+        
+        event_list.append(post)
     
     posts = [
         {
@@ -211,13 +166,22 @@ def logout_postador(request):
     return redirect('home')
 
 def newPost(request):
-    staticTags = ['Artigos', 'Eventos', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais', 'Notícias', 'Tecnologia', 'Ciência e Pesquisa', 'Dicas de Estudo', 'Boas Praticas Escolares', 'Recursos Educationais']
-    
-    return render(
-        request,
-        'pages/newPost.html',
-        {'tags': staticTags}
-    )
+    form = PublicacaoForm()  # Crie uma instância do formulário
+
+    if request.method == 'POST':
+        form = PublicacaoForm(request.POST)
+
+        # Chame is_valid() corretamente, com parênteses
+        if form.is_valid():
+            form.save()
+            form = PublicacaoForm()  # Crie um novo formulário em branco após salvar
+
+    # Adicione o formulário ao contexto, mesmo se o método não for POST
+    context = {"form": form}
+
+    return render(request, "pages/newPost.html", context)
+
+
 
 def search(request):
 

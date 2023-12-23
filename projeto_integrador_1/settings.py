@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Imagens
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_images')
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Application definition
 
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
     'jornal_web',
 ]
 
@@ -120,7 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'jornal_web/static')
@@ -136,3 +138,45 @@ AUTH_USER_MODEL = 'jornal_web.Postador'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+# CKEditor
+CKEDITOR_UPLOAD_PATH = 'ckeditor/upload/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'styles', 'items': ['Format',]},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'links', 'items': ['Link', 'Unlink',]},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', ]},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'insert',
+             'items': ['Image','Html5video', 'Flash', 'Table', 'SpecialChar', 'Youtube']},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
+        
+        'height': '100vh',
+        'width': '100%',
+
+        'toolbarCanCollapse': False,
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+            'html5video',
+            'youtube',
+        ])
+    }
+}

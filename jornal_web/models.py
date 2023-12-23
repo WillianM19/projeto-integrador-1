@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.hashers import make_password
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 class AppUserManager(BaseUserManager):
@@ -69,10 +70,11 @@ class Tags(models.Model):
 
 class Publicacao(models.Model):
     titulo = models.CharField(max_length=200)
-    conteudo = models.TextField() #Conta com tags html
+    conteudo = RichTextUploadingField() #Conta com tags html
     data_de_publicacao = models.DateField()
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)    
+    capa = models.ImageField(upload_to='publicacao_capa', null=True, blank=True)
     def __str__(self):
         return self.titulo
     class Meta:
