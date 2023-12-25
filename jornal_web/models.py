@@ -1,3 +1,4 @@
+import re
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.hashers import make_password
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -74,14 +75,22 @@ class Publicacao(models.Model):
     data_de_publicacao = models.DateField()
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)    
-    capa = models.ImageField(upload_to='publicacao_capa', null=True, blank=True)
-    
+    capa = models.ImageField(upload_to='publicacao_capa')
+
     def is_destaque(self):
         return self.tags.filter(nome='destaque').exists()
     
     def is_evento(self):
         return self.tags.filter(nome='evento').exists()
     
+    def shortDescription(self):
+        try:
+            description = re.fullmatch('<p>(.+)</p>', self.conteudo).group(1)
+        except:
+            description = "Acesse a publicação para ver mais detalhes..."
+            
+        return description
+
     def __str__(self):
         return self.titulo
     class Meta:

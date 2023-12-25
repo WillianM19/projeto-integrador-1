@@ -12,7 +12,7 @@ ComponentProps {
 
 <a href="{% url 'post' %}">
     <div class="postRow">
-        <img class="postRow_postImage" src="{% static image %}" />
+        <img class="postRow_postImage" src="{{ image.url }}" />
         <div class="postRow_content">
             <p>{{title}}</p>
             <div class="postRow_info">

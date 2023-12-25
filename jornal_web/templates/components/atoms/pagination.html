@@ -1,21 +1,34 @@
 {% comment %} 
 ComponentProps {
     selected: string
+    pageSearchKeyWord: string
 }
 {% endcomment %}
 
 <div class="pagination">
     {% if posts.has_previous %}
-        <a href="?page={{ posts.previous_page_number }}">&lt;</a>
+        {% if pageSearchKeyWord %}
+            <a href="?q={{pageSearchKeyWord}}&page={{ posts.previous_page_number }}">&gt;</a>
+        {% else %}
+            <a href="?page={{ posts.previous_page_number }}">&lt;</a>
+        {%endif%}
     {% endif %}
     <ul>
         {% for num in posts.paginator.page_range %}
             <li {% if posts.number == num %} class="selected" {% endif %} onclick="paginationSelect(this)">
-                <a href="?page={{ num }}">{{ num }}</a>
+                {% if pageSearchKeyWord %}
+                    <a href="?q={{pageSearchKeyWord}}&page={{ num }}">{{ num }}</a>
+                {% else %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {%endif%}
             </li>
         {% endfor %}
     </ul>
     {% if posts.has_next %}
-        <a href="?page={{ posts.paginator.num_pages }}">&gt;</a>
+        {% if pageSearchKeyWord %}
+            <a href="?q={{pageSearchKeyWord}}&page={{ posts.paginator.num_pages }}">&gt;</a>
+        {% else %}
+            <a href="?page={{ posts.paginator.num_pages }}">&gt;</a>
+        {%endif%}
     {% endif %}
 </div>

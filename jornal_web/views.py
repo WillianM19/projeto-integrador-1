@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from jornal_web.models import Publicacao, Tags
 from django.db.models import Q
 from .foms import PublicacaoForm
+import re
 
 import locale
 locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
@@ -130,7 +131,7 @@ def home(request):
         all_posts = all_posts.distinct()
 
     # Configurar o paginador
-    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 5)
+    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 8)
     page = request.GET.get('page')
 
     try:
@@ -184,17 +185,15 @@ def logout_postador(request):
 
 @login_required
 def newPost(request):
-    form = PublicacaoForm()  # Crie uma instância do formulário
+    form = PublicacaoForm()
 
     if request.method == 'POST':
         form = PublicacaoForm(request.POST)
 
-        # Chame is_valid() corretamente, com parênteses
         if form.is_valid():
             form.save()
-            form = PublicacaoForm()  # Crie um novo formulário em branco após salvar
+            form = PublicacaoForm()
 
-    # Adicione o formulário ao contexto, mesmo se o método não for POST
     context = {"form": form}
 
     return render(request, "pages/newPost.html", context)
@@ -202,53 +201,38 @@ def newPost(request):
 
 
 def search(request):
-
     staticTags = get_tags_data()
     
-    keySearch = request.GET.get('Artigo', 'pesqusiar')
+    keySearch = request.GET.get('q')
     
-    postRow_list = [
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 1",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 2",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
-        }
-    ]
+    searchedContent = Publicacao.objects.filter(titulo__icontains=keySearch)
+    
+    tags_filter = request.GET.getlist('tags')
+    if tags_filter:
+        # O Q objects para criar uma consulta OR para todas as tags
+        tag_queries = [Q(tags__nome__iexact=tag) for tag in tags_filter]
+        searchedContent = searchedContent.filter(reduce(lambda x, y: x | y, tag_queries))
+        searchedContent = searchedContent.distinct()
+    
+    #Paginador
+    # Configurar o paginador
+    paginator = Paginator(searchedContent.order_by('-data_de_publicacao', '-id'), 4)
+    page = request.GET.get('page')
+    
+    
+    
+
+    try:
+        searchedContentPage = paginator.page(page)
+    except PageNotAnInteger:
+        searchedContentPage = paginator.page(1)
+    except EmptyPage:
+        searchedContentPage = paginator.page(paginator.num_pages)
 
     return render(
         request,
         'pages/search.html',
-        {'keySearch':keySearch, 'tags':staticTags, 'postRow_list':postRow_list}
+        {'keySearch':keySearch, 'tags':staticTags, 'posts':searchedContentPage, 'pageSearchKeyWord': keySearch}
     )
 
 
