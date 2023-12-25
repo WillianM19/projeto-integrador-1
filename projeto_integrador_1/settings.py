@@ -159,7 +159,7 @@ CKEDITOR_CONFIGS = {
         ],
         'toolbar': 'YourCustomToolbarConfig',
         
-        'height': '100vh',
+        'height': '85vh',
         'width': '100%',
 
         'toolbarCanCollapse': False,

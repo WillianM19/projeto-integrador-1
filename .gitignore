@@ -19,5 +19,6 @@ venv.bak/
 .vscode
 media_images
 .gitignore
-media
+/media
+!/*/media
 uploadedImages

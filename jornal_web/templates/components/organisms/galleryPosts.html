@@ -11,6 +11,7 @@ ComponentProps {
     ]
 }
 {% endcomment %}
+{% load static %}
 
 <section class='galleryPosts'>
     {% if admin %}
@@ -20,3 +21,66 @@ ComponentProps {
         {% include "../molecules/post.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao admin=admin %}
     {% endfor %}
 </section>
+
+{% if user.is_authenticated %}
+    <script>
+        function adicionarRemoverDestaque(postId) {
+            // Chama a view de adicionar/remover destaque via AJAX
+            fetch('/adicionar_remover_destaque/' + postId + '/')
+                .then(response => response.json())
+                .then(data => {
+                    const eventIcon = document.getElementById('relevatIcon' + postId);
+                    if (data.status === 'adicionado') {
+                        eventIcon.src = '/static/media/icons/adminIcons/IconRelevantSelect.svg';
+                    } else {
+                        eventIcon.src = '/static/media/icons/adminIcons/IconRelevant.svg';
+                    }
+
+                    location.reload(true);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function adicionarRemoverEvento(postId) {
+            // Chama a view de adicionar/remover evento via AJAX
+            fetch('/adicionar_remover_evento/' + postId + '/')
+                .then(response => response.json())
+                .then(data => {
+                    const eventIcon = document.getElementById('eventIcon' + postId);
+                    if (data.status === 'adicionado') {
+                        eventIcon.src = '/static/media/icons/adminIcons/IconEventSelect.svg';
+                    } else {
+                        eventIcon.src = '/static/media/icons/adminIcons/IconEvent.svg';
+                    }
+
+                    location.reload(true);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+
+        function confirmarExclusao(postId) {
+            if (confirm('Tem certeza de que deseja excluir esta postagem?')) {
+                excluirPost(postId);
+            }
+        }
+        
+        function excluirPost(postId) {
+            fetch(`/excluir_post/${postId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'excluido') {
+                    alert('Postagem excluída com sucesso!');
+                    location.reload(true);
+                } else {
+                    alert('Erro ao excluir a postagem.');
+                }
+            })
+        }
+    </script>
+{% endif %}
