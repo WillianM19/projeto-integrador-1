@@ -24,23 +24,7 @@ ComponentProps {
                 <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
                 <span>TAGS</span>
             </div>
-            <div class="modalPostOptions_search">
-                {% include "../atoms/input.html" with placeholder="Pesquisar..." icon="media/icons/IconSearch.svg" width="100%"%}
-                {% include "../atoms/buttonTag.html" with content="Aplicar" height="46px" buttonColor="var(--colorMainV4)"%}
-            </div>
             <div class="modalPostOptions_tagList">
-                {%for tag in tags%}
-                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
-                {% endfor %}
-                {% include "../atoms/buttonTag.html" with content="Ver Outras" height="46px" buttonColor="var(--colorNeutralV1)" onclick="modalPostOptions_showMore()" class='modalPostOption_seeMore'%}
-            </div>
-        </div>
-        <div class="modalPostOptions_alltags">
-            <div class="modalPostOptions_title">
-                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
-                <span>VER OUTRAS TAGS</span>
-            </div>
-            <div class="modalPostOptions_tagList all">
                 {%for tag in tags%}
                     {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
                 {% endfor %}

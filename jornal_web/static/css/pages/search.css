@@ -18,6 +18,10 @@
     padding: 65px 0;
 }
 
+#search #search_container #search_filters form {
+    width: 80%;
+}
+
 #search .search_results {
     display: flex;
     flex-direction: column;

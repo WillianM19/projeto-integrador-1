@@ -176,10 +176,20 @@ def search(request):
     
     searchedContent = Publicacao.objects.filter(titulo__icontains=keySearch)
     
+    tags_filter = request.GET.getlist('tags')
+    if tags_filter:
+        # O Q objects para criar uma consulta OR para todas as tags
+        tag_queries = [Q(tags__nome__iexact=tag) for tag in tags_filter]
+        searchedContent = searchedContent.filter(reduce(lambda x, y: x | y, tag_queries))
+        searchedContent = searchedContent.distinct()
+    
     #Paginador
     # Configurar o paginador
     paginator = Paginator(searchedContent.order_by('-data_de_publicacao', '-id'), 4)
     page = request.GET.get('page')
+    
+    
+    
 
     try:
         searchedContentPage = paginator.page(page)

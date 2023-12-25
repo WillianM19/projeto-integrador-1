@@ -12,31 +12,21 @@ ComponentProps {
         <button class="modalFilters_btnClose" onclick="handleModal('modalFilters', 'close')">
             <img src="{%static 'media/icons/IconClose.svg'%}" />
         </button>
-        <div class="modalFilters_tags">
-            <div class="modalFilters_title">
-                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
-                <span>TAGS</span>
-            </div>
-            <div class="modalFilters_search">
-                {% include "../atoms/input.html" with placeholder="Pesquisar..." icon="media/icons/IconSearch.svg" width="100%"%}
-                {% include "../atoms/buttonTag.html" with content="Aplicar" height="46px" buttonColor="var(--colorMainV4)"%}
-            </div>
-            <div class="modalFilters_tagList">
-                {%for tag in tags%}
-                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
-                {% endfor %}
-            </div>
-        </div>
         <div class="modalFilters_alltags">
             <div class="modalFilters_title">
                 <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
                 <span>TODAS AS TAGS</span>
             </div>
-            <div class="modalFilters_tagList">
-                {%for tag in tags%}
-                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
-                {% endfor %}
-            </div>
+            <form method="get" action="{% url 'search' %}">
+                <div class="modalFilters_tagList">
+                    <button class="button_submit" type="submit">Aplicar</button>
+                    {% for tag in tags %}
+                        <input type="checkbox" id="tags_Checkbox_{{ forloop.counter }}" name="tags" value="{{ tag }}" {% if tag|lower in tags_filter|join:','|lower %}checked{% endif %}>
+                        <label for="tags_Checkbox_{{ forloop.counter }}" class="taglabel">{{ tag }}</label>
+                    {% endfor %}
+                    <input class="invisible-element" id="aux" name="q" value="{{ pageSearchKeyWord }}">
+                </div>
+            </form>
         </div>
     </div>
 </div>
