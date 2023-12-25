@@ -24,13 +24,13 @@
                 
                 {% comment %} Posts {% endcomment %}
                 {% for post in posts%}
-                    {% include "../components/molecules/postRow.html" with title=post.title description=post.description author=post.author created_at=post.created_at image=post.image %}
+                    {% include "../components/molecules/postRow.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao %}
+                    {% comment %} {% include "../components/molecules/postRow.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao
+                    description=post.conteudo %} {% endcomment %}
                 {% endfor %}
 
             </div>
         </div>
-        {% comment %} {% if posts.paginator.num_page > 1%} {% endcomment %}
-            {% include "../components/atoms/pagination.html" with selected='1' pageSearchKeyWord=pageSearchKeyWord posts=paginator %}
-        {% comment %} {%endif%} {% endcomment %}
+        {% include "../components/atoms/pagination.html" with selected='1' pageSearchKeyWord=pageSearchKeyWord posts=posts %}
     </main>
 {% endblock %}

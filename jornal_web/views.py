@@ -175,8 +175,6 @@ def search(request):
     keySearch = request.GET.get('q')
     
     searchedContent = Publicacao.objects.filter(titulo__icontains=keySearch)
-    postRow_list = []
-    
     
     #Paginador
     # Configurar o paginador
@@ -189,30 +187,11 @@ def search(request):
         searchedContentPage = paginator.page(1)
     except EmptyPage:
         searchedContentPage = paginator.page(paginator.num_pages)
-    
-    for post in searchedContentPage:
-        #Descrição padrão
-        description = "Acesse a publicação para mais detalhes..."
-        
-        try:
-            description = re.fullmatch('<p>(.+)</p>', post.conteudo).group(1)
-        except:
-            pass
-        
-        postFormated = {
-                'id': post.id,
-                'title': post.titulo,
-                'description': description,
-                'created_at': post.data_de_publicacao,
-                'author': post.postador,
-                'image': post.capa,
-        }
-        postRow_list.append(postFormated)
 
     return render(
         request,
         'pages/search.html',
-        {'keySearch':keySearch, 'tags':staticTags, 'posts':postRow_list, 'paginator':paginator, 'pageSearchKeyWord': keySearch}
+        {'keySearch':keySearch, 'tags':staticTags, 'posts':searchedContentPage, 'pageSearchKeyWord': keySearch}
     )
 
 
