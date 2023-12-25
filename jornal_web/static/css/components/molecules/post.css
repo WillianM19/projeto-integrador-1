@@ -9,7 +9,6 @@
 .post:hover {
     transform: scale(1.02);
 }
-
 .post .post_postImage {
     width: 100%;
     height: 302px;
@@ -24,6 +23,8 @@
     color: var(--colorMainV4);
     margin: 14px 0;
     height: 60px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 .post .post_info {

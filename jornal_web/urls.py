@@ -9,6 +9,7 @@ urlpatterns = [
     path('newPost', views.newPost, name='newPost'),
     path('search', views.search, name='search'),
     path('post', views.post, name='post'),
+     path('delete_post/<int:post_id>/', views.delete_post, name='delete_post'),
     # para testar os componentes
     path('components', views.components, name='components'),
 ]

@@ -5,9 +5,8 @@
     overflow: hidden;
 }
 
-.tagList .tagList_title{
+.tagList .tagList_title {
     text-transform: uppercase;
-
     display: flex;
     align-items: center;
     gap: 6px;
@@ -30,11 +29,39 @@
     gap: 19px;
     margin-top: 14px;
     white-space: nowrap;
-
     overflow-x: scroll;
     scrollbar-width: none;
 }
 
-.tagList .tagList_list::-webkit-scrollbar{
+.tagList .tagList_list::-webkit-scrollbar {
     display: none;
+}
+
+/* Estilo para esconder a checkbox */
+.tagList_list input[type="checkbox"] {
+    display: none;
+}
+
+
+.tagList_list .taglabel{
+    cursor: pointer;
+    color: var(--colorFontV1);
+    background-color: var(--colorMainV1);
+    font-family: PoppinsRegular;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px 15px;
+    border-radius: 42px;
+}
+
+.tagList_list input[type="checkbox"]:checked + label {
+    background-color: var(--colorMainV3);
+}
+
+.tagList .button_submit {
+    cursor: pointer;
+    width: 152px;
+    border: 1px solid var(--colorMainV4);
+    background-color: var(--colorMainV7);
+    border-radius: 42px;
 }
