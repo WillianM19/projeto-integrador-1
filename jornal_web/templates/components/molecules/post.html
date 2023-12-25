@@ -24,7 +24,7 @@ ComponentProps {
     </a>
     {%if admin%}
         <div class="post_adminBar">
-            <img src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" />
+            <img src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" onclick="confirmarExclusao('{{ post.id }}')"/>
 
             {% if post.is_evento %}
                 <img id="eventIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconEventSelect.svg'%}" onclick="adicionarRemoverEvento('{{ post.id }}')"/>

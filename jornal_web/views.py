@@ -28,6 +28,18 @@ def components(request):
     )
 
 
+def excluir_post(request, post_id):
+    post = get_object_or_404(Publicacao, id=post_id)
+
+    if request.method == 'POST':
+        post.delete()
+        status = 'excluido'
+    else:
+        status = 'erro'
+    
+    response_data = {'status': status}
+    return JsonResponse(response_data)
+
 def destaque_button_view(request, post_id):
     post = get_object_or_404(Publicacao, id=post_id)
     destaque_tag, _ = Tags.objects.get_or_create(nome='destaque')

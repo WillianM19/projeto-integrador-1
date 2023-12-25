@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('adicionar_remover_destaque/<int:post_id>/', views.destaque_button_view, name='adicionar_remover_destaque'),
     path('adicionar_remover_evento/<int:post_id>/', views.evento_button_view, name='adicionar_remover_evento'),
+    path('excluir_post/<int:post_id>/', views.excluir_post, name='excluir_post'),
 
     # para testar os componentes
     path('components', views.components, name='components'),
