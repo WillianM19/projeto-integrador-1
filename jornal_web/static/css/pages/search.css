@@ -25,6 +25,7 @@
     justify-content: center;
     gap: 36px;
     padding: 0 50px;
+    position: relative;
 }
 
 #search  .search_results .results_title {

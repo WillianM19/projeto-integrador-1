@@ -7,6 +7,7 @@ from functools import reduce
 from jornal_web.models import Publicacao, Tags
 from django.db.models import Q
 from .foms import PublicacaoForm
+import re
 
 import locale
 locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
@@ -171,48 +172,31 @@ def newPost(request):
 
 
 def search(request):
-
     staticTags = get_tags_data()
     
-    keySearch = request.GET.get('Artigo', 'pesqusiar')
+    keySearch = request.GET.get('q')
     
-    postRow_list = [
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 1",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 2",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
-        },
-        {
-            "title": "Avisos de Eventos: O Que Está Acontecendo na Escola",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "image": "media/img/Placeholder.png",
-            "author": "Autor 3",
-            "created_at": " 9 setembro, 2023"
+    searchedContent = Publicacao.objects.filter(titulo__icontains=keySearch)
+    postRow_list = []
+
+    
+    for post in searchedContent:
+        #Descrição padrão
+        description = "Acesse a publicação para mais detalhes..."
+        
+        try:
+            description = re.fullmatch('<p>(.+)</p>', post.conteudo).group(1)
+        except:
+            pass
+        
+        postFormated = {
+                'title': post.titulo,
+                'description': description,
+                'created_at': post.data_de_publicacao,
+                'author': post.postador,
+                'image': post.capa,
         }
-    ]
+        postRow_list.append(postFormated)
 
     return render(
         request,
