@@ -1,3 +1,4 @@
+import re
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.hashers import make_password
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -75,6 +76,15 @@ class Publicacao(models.Model):
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)    
     capa = models.ImageField(upload_to='publicacao_capa')
+    
+    def shortDescription(self):
+        try:
+            description = re.fullmatch('<p>(.+)</p>', self.conteudo).group(1)
+        except:
+            description = "Acesse a publicação para ver mais detalhes..."
+            
+        return description
+
     def __str__(self):
         return self.titulo
     class Meta:

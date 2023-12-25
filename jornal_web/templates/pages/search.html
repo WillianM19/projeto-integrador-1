@@ -24,7 +24,7 @@
                 
                 {% comment %} Posts {% endcomment %}
                 {% for post in posts%}
-                    {% include "../components/molecules/postRow.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao %}
+                    {% include "../components/molecules/postRow.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao description=post.shortDescription %}
                     {% comment %} {% include "../components/molecules/postRow.html" with title=post.titulo image=post.capa author=post.postador.nome created_at=post.data_de_publicacao
                     description=post.conteudo %} {% endcomment %}
                 {% endfor %}
