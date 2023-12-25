@@ -64,4 +64,5 @@
     border: 1px solid var(--colorMainV4);
     background-color: var(--colorMainV7);
     border-radius: 42px;
+    font-size: 22px;
 }
