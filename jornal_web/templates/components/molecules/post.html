@@ -9,22 +9,37 @@ ComponentProps {
 {% endcomment %}
 
 {% load static %}
-<a href="{% url 'post' %}">
-    <div class="post">
-        <img class="post_postImage" src="{{ post.capa.url }}" alt="Capa da Publicação {{title}}"/>
-        <p>{{title}}</p>
-        {%if admin%}
+
+<div class="post">
+    <a href="{% url 'post' %}">
+        <div>
+            <img class="post_postImage" src="{{ post.capa.url }}" alt="Capa da Publicação {{title}}"/>
+            <p>{{title}}</p>
+            <div class="post_info">
+                <span>{{author}}</span>
+                <img src="{% static 'media/icons/IconStar.svg'%}" />
+                <span>{{created_at}}</span>
+            </div>
+        </div>
+    </a>
+    {%if admin%}
         <div class="post_adminBar">
             <img src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" />
-            <img src="{% static 'media/icons/adminIcons/IconEvent.svg'%}" />
-            <img src="{% static 'media/icons/adminIcons/IconRelevant.svg'%}" />
+
+            {% if post.is_evento %}
+                <img id="eventIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconEventSelect.svg'%}" onclick="adicionarRemoverEvento('{{ post.id }}')"/>
+            {% else %}
+                <img id="eventIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconEvent.svg'%}" onclick="adicionarRemoverEvento('{{ post.id }}')"/>
+            {% endif %}
+
+            {% if post.is_destaque %}
+                <img id="relevatIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconRelevantSelect.svg' %}" onclick="adicionarRemoverDestaque('{{ post.id }}')"/>
+            {% else %}
+                <img id="relevatIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconRelevant.svg' %}" onclick="adicionarRemoverDestaque('{{ post.id }}')"/>
+            {% endif %}
+            
+            
             <img src="{% static 'media/icons/adminIcons/IconEdit.svg'%}" />
         </div>
-        {%endif%}
-        <div class="post_info">
-            <span>{{author}}</span>
-            <img src="{% static 'media/icons/IconStar.svg'%}" />
-            <span>{{created_at}}</span>
-        </div>
-    </div>
-</a>
+    {%endif%}
+</div>

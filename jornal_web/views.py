@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from functools import reduce 
+from django.http import JsonResponse
 
 from jornal_web.models import Publicacao, Tags
 from django.db.models import Q
@@ -27,21 +28,39 @@ def components(request):
     )
 
 
-
-@login_required
-def delete_post(request, post_id):
-
-    if not request.user.is_authenticated or not request.user.is_active:
-        return redirect('login')
-
+def destaque_button_view(request, post_id):
     post = get_object_or_404(Publicacao, id=post_id)
+    destaque_tag, _ = Tags.objects.get_or_create(nome='destaque')
 
-    if request.method == 'POST':
-        post.delete()
-        return redirect('home')
+    # Verifique se a tag "destaque" já está associada à publicação
+    if destaque_tag in post.tags.all():
+        # Se estiver associada, remova a tag
+        post.tags.remove(destaque_tag)
+        status = 'removido'
+    else:
+        # Se não estiver associada, adicione a tag
+        post.tags.add(destaque_tag)
+        status = 'adicionado'
 
-    return render(request, 'home')
+    response_data = {'status': status}
+    return JsonResponse(response_data)
 
+def evento_button_view(request, post_id):
+    post = get_object_or_404(Publicacao, id=post_id)
+    evento_tag, _ = Tags.objects.get_or_create(nome='evento')
+
+    # Verifique se a tag "evento" já está associada à publicação
+    if evento_tag in post.tags.all():
+        # Se estiver associada, remova a tag
+        post.tags.remove(evento_tag)
+        status = 'removido'
+    else:
+        # Se não estiver associada, adicione a tag
+        post.tags.add(evento_tag)
+        status = 'adicionado'
+
+    response_data = {'status': status}
+    return JsonResponse(response_data)
 
 def get_tags_data():
     tags = Tags.objects.all()

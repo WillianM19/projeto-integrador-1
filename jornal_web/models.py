@@ -75,6 +75,13 @@ class Publicacao(models.Model):
     postador = models.ForeignKey(Postador, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tags)    
     capa = models.ImageField(upload_to='publicacao_capa', null=True, blank=True)
+    
+    def is_destaque(self):
+        return self.tags.filter(nome='destaque').exists()
+    
+    def is_evento(self):
+        return self.tags.filter(nome='evento').exists()
+    
     def __str__(self):
         return self.titulo
     class Meta:
