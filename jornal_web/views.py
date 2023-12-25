@@ -199,6 +199,23 @@ def newPost(request):
     return render(request, "pages/newPost.html", context)
 
 
+def editPost(request, id):
+    publicacao = get_object_or_404(Publicacao, id=id)
+    
+    form = PublicacaoForm(instance=publicacao)
+
+    if request.method == 'POST':
+        form = PublicacaoForm(request.POST, instance=publicacao)
+
+        if form.is_valid():
+            form.save()
+
+    context = {"form": form, "publicacao": publicacao}
+
+    return render(request, "pages/editPost.html", context)
+
+
+
 
 def search(request):
     staticTags = get_tags_data()

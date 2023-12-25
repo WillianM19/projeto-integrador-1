@@ -38,7 +38,9 @@ ComponentProps {
                 <img id="relevatIcon{{ post.id }}" src="{% static 'media/icons/adminIcons/IconRelevant.svg' %}" onclick="adicionarRemoverDestaque('{{ post.id }}')"/>
             {% endif %}
             
-            <img src="{% static 'media/icons/adminIcons/IconEdit.svg'%}" />
+            <a href='editPost/{{post.id}}/'>
+                <img src="{% static 'media/icons/adminIcons/IconEdit.svg'%}" />
+            </a>
         </div>
     {%endif%}
 </div>
