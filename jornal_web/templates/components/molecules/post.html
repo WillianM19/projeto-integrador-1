@@ -11,7 +11,7 @@ ComponentProps {
 {% load static %}
 <a href="{% url 'post' %}">
     <div class="post">
-        <img class="post_postImage" src="{% static image %}" />
+        <img class="post_postImage" src="{{ post.capa.url }}" alt="Capa da Publicação {{title}}"/>
         <p>{{title}}</p>
         {%if admin%}
         <div class="post_adminBar">

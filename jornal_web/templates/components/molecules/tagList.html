@@ -1,19 +1,24 @@
 {% comment %} 
 ComponentProps {
     tags: string[]
+    tags_filter: tags ativas
 }
 {% endcomment %}
 
 {% load static %}
 
-<div class='tagList'>
-    <p class="tagList_title">
-        <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
-        <span>Todas as Publicações</span>
-    </p>
-    <div class="tagList_list horizontal-Draggable">
-        {%for tag in tags%}
-            {% include '../atoms/buttonTag.html' with content=tag %}
-        {%endfor%}
+<form method="get" action="{% url 'home' %}">
+    <div class='tagList'>
+        <p class="tagList_title">
+            <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+            <span>Todas as Publicações</span>
+        </p>
+        <div class="tagList_list horizontal-Draggable">
+            <button class="button_submit" type="submit">Aplicar</button>
+            {% for tag in tags %}
+                <input type="checkbox" id="tags_Checkbox_{{ forloop.counter }}" name="tags" value="{{ tag }}" {% if tag|lower in tags_filter|join:','|lower %}checked{% endif %}>
+                <label for="tags_Checkbox_{{ forloop.counter }}" class="taglabel">{{ tag }}</label>
+            {% endfor %}
+        </div>
     </div>
-</div>
+</form>
