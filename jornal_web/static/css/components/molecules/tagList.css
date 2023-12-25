@@ -52,17 +52,29 @@
     font-weight: 400;
     padding: 10px 15px;
     border-radius: 42px;
+    transition: 200ms;
+}
+.tagList_list .taglabel:hover {
+    opacity: 0.7;
+    transition: 0;
 }
 
 .tagList_list input[type="checkbox"]:checked + label {
-    background-color: var(--colorMainV3);
+    background-color: var(--colorMainV4);
 }
 
 .tagList .button_submit {
     cursor: pointer;
     width: 152px;
-    border: 1px solid var(--colorMainV4);
     background-color: var(--colorMainV7);
+    border: 1px solid var(--colorNeutralV1);
+    color: var(--colorNeutralV1);
     border-radius: 42px;
     font-size: 22px;
+    transition: 200ms;
+    font-family: PoppinsRegular;
+}
+.tagList .button_submit:hover {
+    border-color: var(--colorMainV4);
+    color: var(--colorMainV4);
 }
