@@ -11,7 +11,7 @@
         {% include "../components/molecules/tagList.html" with tags=tags tags_filter=tags_filter%}
         {% include "../components/organisms/galleryPosts.html" with posts=posts admin=admin%}
         {% if posts.paginator.num_pages > 1%}
-            {% include "../components/atoms/pagination.html" with selected='1' %}
+            {% include "../components/atoms/pagination.html" with selected='1' posts=posts %}
         {%endif%}
     </main>
 {% endblock %}

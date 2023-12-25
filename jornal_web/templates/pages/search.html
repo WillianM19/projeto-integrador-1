@@ -19,16 +19,18 @@
 
             <div class="search_results">
                 <div class="results_title">
-                    <h2>{{postRow_list|length}} RESULTADOS PARA “{{keySearch}}”</h2>
+                    <h2>{{posts|length}} RESULTADOS PARA “{{keySearch}}”</h2>
                 </div>
                 
                 {% comment %} Posts {% endcomment %}
-                {% for post in  postRow_list%}
+                {% for post in posts%}
                     {% include "../components/molecules/postRow.html" with title=post.title description=post.description author=post.author created_at=post.created_at image=post.image %}
                 {% endfor %}
 
             </div>
         </div>
-        {% include '../components/atoms/pagination.html' with selected="1" %} 
+        {% comment %} {% if posts.paginator.num_page > 1%} {% endcomment %}
+            {% include "../components/atoms/pagination.html" with selected='1' pageSearchKeyWord=pageSearchKeyWord posts=paginator %}
+        {% comment %} {%endif%} {% endcomment %}
     </main>
 {% endblock %}

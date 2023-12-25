@@ -154,17 +154,15 @@ def logout_postador(request):
 
 @login_required
 def newPost(request):
-    form = PublicacaoForm()  # Crie uma instância do formulário
+    form = PublicacaoForm()
 
     if request.method == 'POST':
         form = PublicacaoForm(request.POST)
 
-        # Chame is_valid() corretamente, com parênteses
         if form.is_valid():
             form.save()
-            form = PublicacaoForm()  # Crie um novo formulário em branco após salvar
+            form = PublicacaoForm()
 
-    # Adicione o formulário ao contexto, mesmo se o método não for POST
     context = {"form": form}
 
     return render(request, "pages/newPost.html", context)
@@ -178,9 +176,21 @@ def search(request):
     
     searchedContent = Publicacao.objects.filter(titulo__icontains=keySearch)
     postRow_list = []
-
     
-    for post in searchedContent:
+    
+    #Paginador
+    # Configurar o paginador
+    paginator = Paginator(searchedContent.order_by('-data_de_publicacao', '-id'), 4)
+    page = request.GET.get('page')
+
+    try:
+        searchedContentPage = paginator.page(page)
+    except PageNotAnInteger:
+        searchedContentPage = paginator.page(1)
+    except EmptyPage:
+        searchedContentPage = paginator.page(paginator.num_pages)
+    
+    for post in searchedContentPage:
         #Descrição padrão
         description = "Acesse a publicação para mais detalhes..."
         
@@ -190,6 +200,7 @@ def search(request):
             pass
         
         postFormated = {
+                'id': post.id,
                 'title': post.titulo,
                 'description': description,
                 'created_at': post.data_de_publicacao,
@@ -201,7 +212,7 @@ def search(request):
     return render(
         request,
         'pages/search.html',
-        {'keySearch':keySearch, 'tags':staticTags, 'postRow_list':postRow_list}
+        {'keySearch':keySearch, 'tags':staticTags, 'posts':postRow_list, 'paginator':paginator, 'pageSearchKeyWord': keySearch}
     )
 
 
