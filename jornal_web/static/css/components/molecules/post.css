@@ -1,5 +1,6 @@
 .post {
     max-width: 479px;
+    min-width: 479px;
     height: 416px;
     position: relative;
     cursor: pointer;
