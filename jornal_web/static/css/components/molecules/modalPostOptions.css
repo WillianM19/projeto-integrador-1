@@ -85,3 +85,92 @@
     overflow-y: auto;
     display: none;
 }
+
+.modalPostOptions .titulos_label{
+    display: block;
+    font-family: PoppinsBold;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: var(--colorFontV2);
+}
+
+.modalPostOptions .input_titulo{
+    padding: 14px 412px 14px 24px;
+    border-radius: 50px;
+    border: 1px solid var(--colorMainV4);
+    margin-bottom: 15px;
+}
+
+.modalPostOptions .input_image{
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--colorFontV2);
+    border: 1px solid var(--colorMainV4);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.modalPostOptions_tagList input[type="checkbox"] {
+    display: none;
+}
+
+.modalPostOptions .taglabel{
+    cursor: pointer;
+    color: var(--colorFontV1);
+    background-color: var(--colorMainV1);
+    font-family: PoppinsRegular;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px 15px;
+    border-radius: 42px;
+    transition: 200ms;
+}
+
+.modalPostOptions .taglabel:hover {
+    opacity: 0.7;
+    transition: 0;
+}
+
+
+.modalPostOptions input[type="checkbox"]:checked + label {
+    background-color: var(--colorMainV4);
+}
+
+.modalPostOptions .button_submit {
+    cursor: pointer;
+    width: 152px;
+    background-color: var(--colorMainV7);
+    border: 1px solid var(--colorNeutralV1);
+    color: var(--colorNeutralV1);
+    border-radius: 42px;
+    font-size: 22px;
+    transition: 200ms;
+    font-family: PoppinsRegular;
+}
+
+.modalPostOptions .button_submit:hover {
+    border-color: var(--colorMainV4);
+    color: var(--colorMainV4);
+}
+
+.modalPostOptions .enviarDados{
+    cursor: pointer;
+    width: 252px;
+    padding: 10px;
+    background-color: var(--colorMainV7);
+    border: 1px solid var(--colorNeutralV1);
+    color: var(--colorNeutralV1);
+    border-radius: 42px;
+    font-size: 22px;
+    transition: 200ms;
+    font-family: PoppinsRegular;
+    margin-top: 20px;
+    background-color:var(--colorMainV4);
+    color: var(--colorFontV1);
+}
+
+.modalPostOptions .enviarDados:hover {
+    background-color: var(--colorMainV3);
+}

@@ -5,32 +5,39 @@ ComponentProps {
 }
 {% endcomment %}
 
-{%block main%}
+{% block main %}
 <div class="modalPostOptions">
     <div class="modalPostOptions_content">
-        <button class="modalPostOptions_btnClose" onclick="handleModal('modalPostOptions', 'close')">
-            <img src="{%static 'media/icons/IconClose.svg'%}" />
-        </button>
+        <a class="modalPostOptions_btnClose" onclick="handleModal('modalPostOptions', 'close')">
+            <img src="{% static 'media/icons/IconClose.svg' %}" />
+        </a>
         <div class="modalPostOptions_options">
             <div class="modalPostOptions_title">
-                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
+                <img src="{% static 'media/icons/IconGreenStars.svg' %}" />
                 <span>OPÇÕES DE ENVIO:</span>
             </div>
-            {% include '../atoms/checkbox.html' with label="Marcar como Destaque"%}
-            {% include '../atoms/checkbox.html' with label="Marcar como Evento"%}
-        </div>
-        <div class="modalPostOptions_tags">
-            <div class="modalPostOptions_title">
-                <img src="{%static 'media/icons/IconGreenStars.svg'%}" />
-                <span>TAGS</span>
+            
+                <label class="titulos_label" for="postTitle">Título:</label>
+                <input class="input_titulo" type="text" id="postTitle" name="postTitle" placeholder="Digite o título do post" value="{{ post_title|default:'' }}">
+
+                <label class="titulos_label" for="coverImage">Selecionar imagem de capa:</label>
+                <input class="input_image" type="file" id="coverImage" name="coverImage" accept="image/*" {% if cover_image %}value="{{ cover_image }}" {% endif %}>
+
+                <div class="modalPostOptions_tags">
+                    <div class="modalPostOptions_title">
+                        <img src="{% static 'media/icons/IconGreenStars.svg' %}" />
+                        <span>TAGS</span>
+                    </div>
+                    <div class="modalPostOptions_tagList">
+                        {% for tag in tags %}
+                            <input type="checkbox" id="tags_Checkbox_{{ tag.id }}" name="tags" value="{{ tag.id }}" {% if tag.id|stringformat:"s" in selected_tags_ids %}checked{% endif %}>
+                            <label for="tags_Checkbox_{{ tag.id }}" class="taglabel">{{ tag.nome }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+                
             </div>
-            <div class="modalPostOptions_tagList">
-                {%for tag in tags%}
-                    {% include "../atoms/buttonTag.html" with content=tag height="46px"%}
-                {% endfor %}
-            </div>
-        </div>
-        {% include "../atoms/buttonTag.html" with content="DELETAR POST" height="46px" buttonColor="red" onclick="function(){alert('aaaaaa')}" icon='media/icons/adminIcons/IconDelete.svg'%}
+        <button class="enviarDados" type="submit">Confirmar envio</button>
     </div>
 </div>
 {% endblock %}

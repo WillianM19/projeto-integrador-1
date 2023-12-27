@@ -5,7 +5,7 @@
 {%block main%}
     <main class="home">
         <section class="home_relevantContent">
-            {% include "../components/molecules/highlights.html" with destaques_data=relevantSliderContent %}
+            {% include "../components/molecules/highlights.html" with destaques_data=relevantSliderContent%}
             {% include "../components/molecules/eventList.html" with event_list=event_list %}
         </section>
         {% include "../components/molecules/tagList.html" with tags=tags tags_filter=tags_filter%}

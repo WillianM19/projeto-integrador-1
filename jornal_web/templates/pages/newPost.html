@@ -3,25 +3,25 @@
 
 
 {%block main%}
-    {% include "../components/molecules/modalPostOptions.html" with tags=tags alltags=tags %}
-    <main class="newPost">
-        <div id="container_editor">
-            <form method="post">
-                {% csrf_token %}
-                {{form.media}}
-                {{form.as_p}}
-        
-                <button class="button-send" type="submit">Enviar</button>
-            </form>
-            <a href="{% url "home" %}" class="button-home">
-                <img src="{%static "media\icons\IconHomeEditor.svg" %}" alt="icone da página principal">
-            </a>
+<main class="newPost">
+    <div id="container_editor">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            {{form.as_p}}
+            
+            {% include "../components/molecules/modalPostOptions.html" with tags=tags alltags=tags %}
+            <a class="button-send" onclick="handleModal('modalPostOptions', 'open', true)">Enviar</a>
+        </form>
+        <a href="{% url "home" %}" class="button-home">
+            <img src="{%static "media\icons\IconHomeEditor.svg" %}" alt="icone da página principal">
+        </a>
+        {% if error_message %}
+            <div id="error_message">
+                <p>{{error_message}}</p>
+            </div>
+        {% endif %}
 
-            <button class="newPost_config" onclick="handleModal('modalPostOptions', 'open', true)">
-                <img src="{% static 'media/icons/IconNewPostConfig.svg' %}" />
-            </button>
-
-        </div>
     </main>
 
     <script>

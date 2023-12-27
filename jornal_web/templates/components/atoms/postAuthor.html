@@ -10,10 +10,10 @@ ComponentProps {
 {% load static %}
 
 <article class="postAuthor">
-    <img class="postAuthor_img" src="{%static img %}" alt="Foto de perfil do autor do post">
+    <img class="postAuthor_img" src="{{ img.url }}" alt="Sem Foto">
 
     <div class="postAuthor_info">
         <h4>{{nomeAutor}}</h4>
-        <p>Publicada por {{nomeAutor}} em {{date}} ― Atualizada há {{updated}}</p>
+        <p>Publicada por {{nomeAutor}} em {{date}}</p>
     </div>
 </article>

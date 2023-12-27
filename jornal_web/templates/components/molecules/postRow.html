@@ -10,7 +10,7 @@ ComponentProps {
 
 {% load static %}
 
-<a href="{% url 'post' %}">
+<a href='/post_page/{{ post.id }}/'>
     <div class="postRow">
         <img class="postRow_postImage" src="{{ image.url }}" />
         <div class="postRow_content">
