@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from jornal_web.models import Publicacao, Tags
 from django.db.models import Q
 from .foms import PublicacaoForm
-import re
+from django.utils import timezone
 
 import locale
 locale.setlocale(locale.LC_ALL, 'pt_BR.utf8')
@@ -28,7 +28,7 @@ def components(request):
         'pages/components.html', {'tags': staticTags, 'admin': admin}
     )
 
-
+@login_required
 def excluir_post(request, post_id):
     post = get_object_or_404(Publicacao, id=post_id)
 
@@ -41,6 +41,7 @@ def excluir_post(request, post_id):
     response_data = {'status': status}
     return JsonResponse(response_data)
 
+@login_required
 def destaque_button_view(request, post_id):
     post = get_object_or_404(Publicacao, id=post_id)
     destaque_tag, _ = Tags.objects.get_or_create(nome='destaque')
@@ -58,6 +59,7 @@ def destaque_button_view(request, post_id):
     response_data = {'status': status}
     return JsonResponse(response_data)
 
+@login_required
 def evento_button_view(request, post_id):
     post = get_object_or_404(Publicacao, id=post_id)
     evento_tag, _ = Tags.objects.get_or_create(nome='evento')
@@ -95,6 +97,7 @@ def home(request):
         if (relevantCouter >= maxRelevantAmount): break
         
         destaque_aux = {
+            'id': destaque.id,
             'imagem': destaque.capa,
             'titulo': destaque.titulo,
         }
@@ -110,6 +113,7 @@ def home(request):
     for evento in eventos:
         
         post = {
+            'id': evento.id,
             'title': evento.titulo,
             'event_date': evento.data_de_publicacao,
             'event_datetime': evento.data_de_publicacao,
@@ -131,7 +135,7 @@ def home(request):
         all_posts = all_posts.distinct()
 
     # Configurar o paginador
-    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 8)
+    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 9)
     page = request.GET.get('page')
 
     try:
@@ -183,38 +187,97 @@ def logout_postador(request):
     logout(request)
     return redirect('home')
 
+
 @login_required
 def newPost(request):
-    form = PublicacaoForm()
+    staticTags = get_tags_data()
+    error_message = None
+    post_title = None
+    cover_image = None
+    selected_tags_ids = []
 
     if request.method == 'POST':
-        form = PublicacaoForm(request.POST)
+        # Obtendo dados do formulário HTML
+        post_title = request.POST.get('postTitle')
+        cover_image = request.FILES.get('coverImage')
+        
+        selected_tags_ids = request.POST.getlist('tags')
 
-        if form.is_valid():
-            form.save()
-            form = PublicacaoForm()
+        if not post_title or not cover_image or not selected_tags_ids:
+            error_message = "Todos os campos são obrigatórios."
 
-    context = {"form": form}
+        django_form = PublicacaoForm(request.POST, request.FILES)
 
+        if django_form.is_valid() and not error_message:
+            novo_post = django_form.save(commit=False)
+            novo_post.titulo = post_title 
+            novo_post.capa = cover_image 
+            novo_post.data_de_publicacao = timezone.now()
+            novo_post.postador = request.user
+            novo_post.save()
+            
+            for tag_id in selected_tags_ids:
+                tag = Tags.objects.get(pk=tag_id)
+                novo_post.tags.add(tag)
+
+            return redirect('post_page', publicacao_id=novo_post.pk)
+
+    context = {
+        "form": PublicacaoForm(request.POST, request.FILES) if error_message else PublicacaoForm(),
+        "tags": staticTags,
+        "error_message": error_message,
+        "post_title": post_title,
+        "cover_image": cover_image,
+        "selected_tags_ids": selected_tags_ids,
+    }
     return render(request, "pages/newPost.html", context)
 
-
+@login_required
 def editPost(request, id):
     publicacao = get_object_or_404(Publicacao, id=id)
-    
-    form = PublicacaoForm(instance=publicacao)
 
     if request.method == 'POST':
-        form = PublicacaoForm(request.POST, instance=publicacao)
+        form = PublicacaoForm(request.POST, request.FILES, instance=publicacao)
 
         if form.is_valid():
+            novo_titulo = request.POST.get('postTitle', '')
+            coverImage = request.FILES.get('coverImage', None)
+
+            if novo_titulo != publicacao.titulo:
+                publicacao.titulo = novo_titulo
+            
+            if coverImage is not None:
+                publicacao.capa = coverImage
+
             form.save()
+            publicacao.save()
 
-    context = {"form": form, "publicacao": publicacao}
+            # Atualiza as tags
+            selected_tags_ids = request.POST.getlist('tags')
+            publicacao.tags.set(selected_tags_ids)
 
+            return redirect('post_page', publicacao_id=id)
+    else:
+        # Inicializa o formulário com os valores atuais do objeto Publicacao
+        form = PublicacaoForm(instance=publicacao)
+
+    post_title = publicacao.titulo
+    cover_image = publicacao.capa
+    tags = get_tags_data()
+    tags_all = publicacao.tags.all()
+
+    selected_tags_ids = [str(tag.id) for tag in publicacao.tags.all()]
+
+    context = {
+        "form": form,
+        "publicacao": publicacao,
+        "post_title": post_title,
+        "cover_image": cover_image,
+        "tags": tags,
+        "tags_all": tags_all,
+        "selected_tags_ids": selected_tags_ids,
+    }
     return render(request, "pages/editPost.html", context)
-
-
 
 
 def search(request):
@@ -236,9 +299,6 @@ def search(request):
     paginator = Paginator(searchedContent.order_by('-data_de_publicacao', '-id'), 4)
     page = request.GET.get('page')
     
-    
-    
-
     try:
         searchedContentPage = paginator.page(page)
     except PageNotAnInteger:
@@ -254,9 +314,11 @@ def search(request):
 
 
 
-def post(request):
-    
+def post_view(request, publicacao_id):
+    publicacao = get_object_or_404(Publicacao, pk=publicacao_id)
+
     return render(
         request,
-        'pages/post.html'
+        'pages/post.html',
+        {'publicacao': publicacao,}
     )

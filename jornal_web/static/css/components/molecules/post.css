@@ -23,9 +23,11 @@
     font-weight: 600;
     color: var(--colorMainV4);
     margin: 14px 0;
-    height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Define o número máximo de linhas */
     word-wrap: break-word;
-    text-overflow: ellipsis;
 }
 
 .post .post_info {

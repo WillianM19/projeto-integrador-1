@@ -11,10 +11,10 @@ ComponentProps {
 {% load static %}
 
 <div class="post">
-    <a href="{% url 'post' %}">
+    <a href='/post_page/{{ post.id }}/'>
         <div>
             <img class="post_postImage" src="{{ post.capa.url }}" alt="Capa da Publicação {{title}}"/>
-            <p>{{title}}</p>
+            <p title="{{title}}">{{title}}</p>
             <div class="post_info">
                 <span>{{author}}</span>
                 <img src="{% static 'media/icons/IconStar.svg'%}" />

@@ -29,7 +29,7 @@
                 <img src="{%static 'media/icons/HighContrast.svg' %}" alt="Botão representando o opção de mudar para o tema de cores alto contraste">
             </button>
             
-            {% if admin %}
+            {% if request.user.is_authenticated %}
                 <a class="logout" href="{% url 'logout' %}">Sair</a>
             {% endif %}
         </div>

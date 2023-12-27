@@ -54,6 +54,7 @@
     border-radius: 42px;
     transition: 200ms;
 }
+
 .tagList_list .taglabel:hover {
     opacity: 0.7;
     transition: 0;

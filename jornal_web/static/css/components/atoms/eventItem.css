@@ -1,3 +1,7 @@
+.container_event_link{
+    position: relative;
+}
+
 .eventItem {
     position: relative;
     min-height: 95.9px; 
@@ -68,13 +72,14 @@
     text-overflow: ellipsis;
 }
 
-.eventItem .eventItem_admin_delete {
+.container_event_link .eventItem_admin_delete {
     position: absolute;
+    cursor: pointer;
     top: 10px;
     right: 14px;
     filter: invert(59%) sepia(70%) saturate(3586%) hue-rotate(115deg) brightness(95%) contrast(101%);
 }
 
-.eventItem .eventItem_admin_delete:hover{
+.container_event_link .eventItem_admin_delete:hover{
     filter: brightness(0) saturate(100%) invert(68%) sepia(82%) saturate(460%) hue-rotate(338deg) brightness(100%) contrast(101%);
 }

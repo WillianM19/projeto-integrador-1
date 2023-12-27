@@ -15,16 +15,16 @@ ComponentProps {
 <div class="highlights">
     
     {% for destaque in destaques_data %}
-        <a href="{% url 'post' %}" class="slide_container{% if forloop.first %} active{% endif %} ">
+        <a href='{% url "post_page" publicacao_id=destaque.id %}' class="slide_container{% if forloop.first %} active{% endif %} ">
             <img src="{{ destaque.imagem.url }}" alt="{{ destaque.titulo }}">
             <div class="slide_filterDark"></div>
-            
-            {%if admin%}
-                <img class="slide_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque"/>
-            {%endif%}
 
             <h2 class="slide_info">{{ destaque.titulo }}</h2>
         </a>
+
+        {%if admin%}
+            <img class="slide_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque" onclick="gerenciarDestaque('{{ destaque.id }}')"/>
+        {%endif%}
     {% endfor %}
 
     <div class="navigation_btns">
@@ -34,3 +34,24 @@ ComponentProps {
     </div>    
 
 </div>
+
+{% if user.is_authenticated %}
+    <script>
+        function gerenciarDestaque(postId, destaqueId) {
+
+            // Chama a view de adicionar/remover destaque via AJAX
+            fetch('/adicionar_remover_destaque/' + postId + '/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'removido') {
+                        var destaqueElement = document.querySelector('.slide_container.active');
+                        destaqueElement.parentNode.removeChild(destaqueElement);
+                        setTimeout(function() {
+                            location.reload(true);
+                        }, 100);
+                    }
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+    </script>
+{% endif %}

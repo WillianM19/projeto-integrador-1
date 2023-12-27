@@ -15,21 +15,47 @@ ComponentProps {
 
 {% load static %}
 
-<a href="{% url 'post' %}">
-    <div class="eventItem">
-        <div class="eventItem_date">
-            <time datetime="2023-10-12">
-                <span class="month">{{date.week}}</span>
-                <span class="day_week">{{date.dayWeek}}</span>
-            </time>
-        </div>
-        <div class="eventItem_info">
-            <h2 title="Feira de Ciências" >{{date.title}}</h2>
-            <p><time datetime="{{date.event_datetime}}">{{date.event_date}}</time></p>
-        </div>
 
-        {%if admin%}
-            <img class="eventItem_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque"/>
-        {%endif%}
-    </div>
-</a>
+
+<div class="container_event_link">
+    <a href='{% url "post_page" publicacao_id=date.id %}' class="event_link">
+        <div class="eventItem">
+            <div class="eventItem_date">
+                <time datetime="2023-10-12">
+                    <span class="month">{{date.week}}</span>
+                    <span class="day_week">{{date.dayWeek}}</span>
+                </time>
+            </div>
+            <div class="eventItem_info">
+                <h2 title="{{date.title}}" >{{date.title}}</h2>
+                <p><time datetime="{{date.event_datetime}}">{{date.event_date}}</time></p>
+            </div>
+        </div>
+    </a>
+    {%if admin%}
+        <img class="eventItem_admin_delete" src="{% static 'media/icons/adminIcons/IconDelete.svg'%}" alt="botão de deletar destaque" onclick="gerenciareventos('{{ date.id }}')"/>
+    {%endif%}
+</div>
+
+
+
+{% if user.is_authenticated %}
+    <script>
+        function gerenciareventos(postId, destaqueId) {
+
+            // Chama a view de adicionar/remover destaque via AJAX
+            fetch('/adicionar_remover_evento/' + postId + '/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'removido') {
+                        var destaqueElement = document.querySelector('.slide_container.active');
+                        destaqueElement.parentNode.removeChild(destaqueElement);
+                        setTimeout(function() {
+                            location.reload(true);
+                        }, 100);
+                    }
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+    </script>
+{% endif %}
