@@ -7,7 +7,7 @@
 
 .highlights:hover {
     border-radius: 18px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.884);
+    box-shadow: 2px 2px 8px rgba(145, 135, 135, 0.884);
     transition: box-shadow 0.3s; 
 }
 
@@ -53,10 +53,15 @@
     text-transform: uppercase;
     font-weight: 800; 
     width: 80%;
-    height: 60%;
+    height: 55%;
     color: var(--colorFontV1);
     padding: 15px 30px;
     pointer-events: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Define o número máximo de linhas */
+    word-wrap: break-word;
 }
 
 .highlights .slide_admin_delete {

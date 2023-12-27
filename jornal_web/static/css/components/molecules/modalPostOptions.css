@@ -96,7 +96,9 @@
 }
 
 .modalPostOptions .input_titulo{
-    padding: 14px 412px 14px 24px;
+    padding: 12px;
+    height: 50px;
+    width: 60%;
     border-radius: 50px;
     border: 1px solid var(--colorMainV4);
     margin-bottom: 15px;

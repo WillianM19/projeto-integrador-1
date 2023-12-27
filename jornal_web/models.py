@@ -1,8 +1,10 @@
-import re
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.contrib.auth.hashers import make_password
+from django.core.files.uploadedfile import SimpleUploadedFile
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.contrib.auth.hashers import make_password
+from django.core.files import File
 from django.db import models
+import re
 
 class AppUserManager(BaseUserManager):
     def create_user(self, email, nome, password=None, **extra_fields):
@@ -27,6 +29,11 @@ class AppUserManager(BaseUserManager):
             raise ValueError('O campo de nome deve ser preenchido')
 
         user = self.create_user(email=email, nome=nome, password=password, **extra_fields)
+
+        default_image_path = 'jornal_web\\static\\media\\img\\SuperUserPhoto.jpg'
+        default_image = SimpleUploadedFile(name='default_image.png', content=open(default_image_path, 'rb').read(), content_type='image/jpg')
+        user.imagem_perfil.save('default_image.png', File(default_image))
+        user.save(using=self._db)
 
         user.is_staff = True
         user.is_superuser = True

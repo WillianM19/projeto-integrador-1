@@ -13,6 +13,8 @@
     margin-top: 46px;
     margin-bottom: 38px;
     text-transform: uppercase;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 #post #post_container .post_title h1 {
@@ -232,6 +234,7 @@
     max-height: 900px;
     display: block;
     margin: auto;
+    border-radius: 8px;
 }
 
 .post_content .youtube-embed-wrapper{
