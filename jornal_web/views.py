@@ -135,7 +135,7 @@ def home(request):
         all_posts = all_posts.distinct()
 
     # Configurar o paginador
-    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 8)
+    paginator = Paginator(all_posts.order_by('-data_de_publicacao', '-id'), 9)
     page = request.GET.get('page')
 
     try:
